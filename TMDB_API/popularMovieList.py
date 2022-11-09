@@ -4,7 +4,7 @@ from pprint import pprint
 API_KEY = '90948a33935bf9b9275c46d36a90412c'
 
 
-def popularMovieList():
+def popular_movie_list():
 
     # 인기 영화 목록 가져오기
     p_payload = {
@@ -24,4 +24,4 @@ def popularMovieList():
 # 아래의 코드는 수정하지 않습니다.
 if __name__ == '__main__':
 
-    pprint(popularMovieList())
+    pprint(popular_movie_list())
