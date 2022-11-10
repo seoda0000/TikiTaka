@@ -1,6 +1,14 @@
 import requests
 from pprint import pprint
 
+# JSON 파일 만들기
+import json
+
+file_path = "./genreList.json"
+
+
+
+
 API_KEY = '90948a33935bf9b9275c46d36a90412c'
 
 
@@ -20,8 +28,6 @@ def genre_list():
     return rdata
 
 
-if __name__ == '__main__':
-    """
-    # 장르 목록 반환
-    """
-    pprint(genre_list())
+
+with open(file_path, 'w') as outfile:
+    json.dump(genre_list(), outfile, indent=4, ensure_ascii=False)
