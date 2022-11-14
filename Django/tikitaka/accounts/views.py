@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 
-# Create your views here.
 from django.conf import settings
 from accounts.models import User
 from allauth.socialaccount.models import SocialAccount
@@ -26,15 +25,10 @@ def kakao_login(request):
 
 def kakao_callback(request):
     rest_api_key = getattr(settings, 'KAKAO_REST_API_KEY')
-    admin_key = getattr(settings, 'KAKAO_ADMIN_KEY')
     code = request.GET.get("code")
     redirect_uri = KAKAO_CALLBACK_URI
 
-
-    """
-    Access Token Request
-    """
-
+    # Access Token Request
 
     token_req = requests.get(
         f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={rest_api_key}&redirect_uri={redirect_uri}&code={code}")
@@ -44,33 +38,15 @@ def kakao_callback(request):
         raise JSONDecodeError(error)
     access_token = token_req_json.get("access_token")
 
-
-    """
-    Email Request
-    """
-
+    # Email Request
 
     profile_request = requests.get(
         "https://kapi.kakao.com/v2/user/me", headers={"Authorization": f"Bearer {access_token}"})
     profile_json = profile_request.json()
     kakao_account = profile_json.get('kakao_account')
-
-
-    """
-    kakao_account에서 이메일 외에
-    카카오톡 프로필 이미지, 배경 이미지 url 가져올 수 있음
-    print(kakao_account) 참고
-    """
-
-
     email = kakao_account.get('email')
-   
 
-
-    """
-    Signup or Signin Request
-    """
-
+    # Signup or Signin Request
 
     try:
         user = User.objects.get(email=email)
@@ -91,8 +67,9 @@ def kakao_callback(request):
         accept_json = accept.json()
         accept_json.pop('user', None)
         return JsonResponse(accept_json)
+        
+    # 기존에 가입된 유저가 없으면 새로 가입
     except User.DoesNotExist:
-        # 기존에 가입된 유저가 없으면 새로 가입
         data = {'access_token': access_token, 'code': code}
         accept = requests.post(
             f"{BASE_URL}accounts/kakao/login/finish/", data=data)
