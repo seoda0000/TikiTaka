@@ -24,7 +24,7 @@ def popular_movie(request):
 
 
 # 상위 영화 목록 가져오기
-def top_rated_movie():
+def top_rated_movie(request):
     payload = {
         'api_key': API_KEY,
         'language': 'ko-KR',
@@ -38,7 +38,7 @@ def top_rated_movie():
 
 
 # 상영 중인 영화 목록 가져오기
-def now_playing_movie():
+def now_playing_movie(request):
     payload = {
         'api_key': API_KEY,
         'language': 'ko-KR',
@@ -47,13 +47,13 @@ def now_playing_movie():
         }
     url = 'https://api.themoviedb.org/3/movie/now_playing'
     r = requests.get(url, params=payload)
-    rdata = r.json()
+    rdata = r.json()['results']
     return JsonResponse(rdata, safe=False)
 
 
 
 # 상영 중인 영화 예고편 목록 가져오기
-def now_playing_movie_video():
+def now_playing_movie_video(request):
 
     # 상영 중인 영화 목록 가져오기
     p_payload = {
@@ -70,6 +70,7 @@ def now_playing_movie_video():
 
     for data in rdata:
         title = data['title']
+        backdrop_path = data['backdrop_path']
         movie_id = str(data['id'])
         video_payload = {
             'api_key': API_KEY,
@@ -82,6 +83,8 @@ def now_playing_movie_video():
             if str(type(video_rdata)) == "<class 'list'>":
                 video_rdata = video_rdata[0]
             video_rdata['title'] = title
+            video_rdata['backdrop_path'] = backdrop_path
+            
             video_list.append(video_rdata)
 
     return JsonResponse(video_list, safe=False)
