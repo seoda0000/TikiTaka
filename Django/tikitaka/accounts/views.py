@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from accounts.models import User
 from allauth.socialaccount.models import SocialAccount
-from django.conf import settings
 from dj_rest_auth.registration.views import SocialLoginView
 # from allauth.socialaccount.providers.google import views as google_view
 from allauth.socialaccount.providers.kakao import views as kakao_view

@@ -1,13 +1,13 @@
 # from django.shortcuts import render
 # from rest_framework.response import Response
 from django.http.response import JsonResponse
+from django.conf import settings
 
 import re
 import requests
 
 
-
-API_KEY = '90948a33935bf9b9275c46d36a90412c'
+API_KEY = getattr(settings, 'TMDB_API_KEY')
 
 
 # 인기 영화 목록 가져오기
