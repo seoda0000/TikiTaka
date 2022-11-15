@@ -88,3 +88,65 @@ def now_playing_movie_video(request):
             video_list.append(video_rdata)
 
     return JsonResponse(video_list, safe=False)
+
+
+# 키워드로 영화 검색
+def search_movie(request):
+
+    # 검색 키워드
+    search_input = input()
+    p = 1
+    search_result = []
+
+    # 영화 검색
+    while True:
+        p_payload = {
+            'api_key': API_KEY,
+            'language': 'ko-KR',
+            'page': p,
+            'include_adult': 'true',
+            'query': search_input,
+            # 'region': # 지역 설정 가능 ex. KR
+            }
+        url = 'https://api.themoviedb.org/3/search/movie'
+        r = requests.get(url, params=p_payload)
+        rdata = r.json()['results']
+
+        if rdata:
+            search_result += rdata
+            p += 1
+        else:
+            break
+
+    return JsonResponse(search_result, safe=False)
+
+
+# 영화인 검색
+def search_movie_people(request):
+
+    # 검색 키워드
+    search_input = input()
+    p = 1
+    search_result = []
+
+    # 영화인 검색
+    while True:
+        payload = {
+            'api_key': API_KEY,
+            'language': 'ko-KR',
+            'page': p,
+            'include_adult': 'true',
+            'query': search_input,
+            # 'region': 'KR',
+            }
+        url = 'https://api.themoviedb.org/3/search/person'
+        r = requests.get(url, params=payload)
+        rdata = r.json()['results']
+
+        if rdata:
+            search_result += rdata
+            p += 1
+        else:
+            break
+
+    return search_result

@@ -8,21 +8,30 @@ def search_movie():
 
     # 검색 키워드
     search_input = input()
+    p = 1
+    search_result = []
 
     # 영화 검색
-    p_payload = {
-        'api_key': API_KEY,
-        'language': 'ko-KR',
-        'page': 1,
-        'include_adult': 'true',
-        'query': search_input,
-        # 'region':
-        }
-    url = 'https://api.themoviedb.org/3/search/movie'
-    r = requests.get(url, params=p_payload)
-    rdata = r.json()
+    while True:
+        p_payload = {
+            'api_key': API_KEY,
+            'language': 'ko-KR',
+            'page': p,
+            'include_adult': 'true',
+            'query': search_input,
+            # 'region': # 지역 설정 가능 ex. KR
+            }
+        url = 'https://api.themoviedb.org/3/search/movie'
+        r = requests.get(url, params=p_payload)
+        rdata = r.json()['results']
 
-    return rdata
+        if rdata:
+            search_result += rdata
+            p += 1
+        else:
+            break
+
+    return search_result
 
 
 if __name__ == '__main__':
