@@ -7,4 +7,5 @@ urlpatterns = [
     path('top_rated_movie/', views.top_rated_movie),
     path('now_playing_movie/', views.now_playing_movie),
     path('now_playing_movie_video/', views.now_playing_movie_video),
+    
 ]
