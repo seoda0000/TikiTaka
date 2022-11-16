@@ -365,9 +365,6 @@ def get_movie(page):
                 else:
                     people.name = cast['name']
 
-
-
-
                 people.department = cast['known_for_department']
                 people.profile_path = cast['profile_path']
                 people.save()
@@ -404,6 +401,6 @@ def get_movie(page):
 
 # DB : 영화 목록 가져오기
 def get_movies(request):
-    for p in range(1, 21):
+    for p in range(21, 40):
         get_movie(p)
     return JsonResponse({"data" : "success!"}) 
