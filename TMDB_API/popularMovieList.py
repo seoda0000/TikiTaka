@@ -14,10 +14,11 @@ def popular_movie_list():
         }
     url = 'https://api.themoviedb.org/3/movie/popular'
     r = requests.get(url, params=p_payload)
-    rdata = r.json()['results']
+    # rdata = r.json()['results']
+    rdata = r.json()
 
     # 평점순으로 정렬 후 반환
-    rdata.sort(key = lambda x: x['vote_average'], reverse = True)
+    # rdata.sort(key = lambda x: x['vote_average'], reverse = True)
     return rdata
 
 

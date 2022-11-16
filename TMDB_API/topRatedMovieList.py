@@ -15,7 +15,8 @@ def top_rate_movie_list():
         }
     url = 'https://api.themoviedb.org/3/movie/top_rated'
     r = requests.get(url, params=p_payload)
-    rdata = r.json()['results']
+    rdata = r.json()
+    # rdata = r.json()['results']
 
     return rdata
 

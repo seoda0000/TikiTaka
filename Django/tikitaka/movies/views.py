@@ -60,7 +60,7 @@ def now_playing_movie(request):
             break
 
     # 상영 중인 영화 목록 출력
-    return now_playing_movie
+    return JsonResponse(now_playing_movie, safe=False)
 
 
 
