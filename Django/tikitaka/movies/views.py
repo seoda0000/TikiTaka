@@ -38,7 +38,7 @@ def top_rated_movie(request):
 
 
 # 상영 중인 영화 목록 가져오기
-def now_playing_movie_list(request):
+def now_playing_movie(request):
     p = 1
     now_playing_movie = []
 
@@ -65,7 +65,7 @@ def now_playing_movie_list(request):
 
 
 # 상영 중인 영화 예고편 목록 가져오기
-def now_playing_movie_video_list(request):
+def now_playing_movie_video(request):
 
     p = 1
     now_playing_movie_video = []
