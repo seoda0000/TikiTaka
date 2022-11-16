@@ -404,6 +404,6 @@ def get_movie(page):
 
 # DB : 영화 목록 가져오기
 def get_movies(request):
-    for p in range(11, 21):
+    for p in range(1, 21):
         get_movie(p)
     return JsonResponse({"data" : "success!"}) 
