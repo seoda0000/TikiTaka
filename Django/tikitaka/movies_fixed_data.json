@@ -1,1922 +1,346 @@
 [
 {
   "model": "movies.country",
-  "pk": 1,
+  "pk": "AE",
   "fields": {
-    "name": "Afghanistan",
-    "code": "AF"
+    "english_name": "United Arab Emirates",
+    "native_name": "아랍에미리트 연합"
   }
 },
 {
   "model": "movies.country",
-  "pk": 2,
+  "pk": "AR",
   "fields": {
-    "name": "Åland Islands",
-    "code": "AX"
+    "english_name": "Argentina",
+    "native_name": "아르헨티나"
   }
 },
 {
   "model": "movies.country",
-  "pk": 3,
+  "pk": "AT",
   "fields": {
-    "name": "Albania",
-    "code": "AL"
+    "english_name": "Austria",
+    "native_name": "오스트리아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 4,
+  "pk": "AU",
   "fields": {
-    "name": "Algeria",
-    "code": "DZ"
+    "english_name": "Australia",
+    "native_name": "호주"
   }
 },
 {
   "model": "movies.country",
-  "pk": 5,
+  "pk": "BE",
   "fields": {
-    "name": "American Samoa",
-    "code": "AS"
+    "english_name": "Belgium",
+    "native_name": "벨기에"
   }
 },
 {
   "model": "movies.country",
-  "pk": 6,
+  "pk": "BG",
   "fields": {
-    "name": "AndorrA",
-    "code": "AD"
+    "english_name": "Bulgaria",
+    "native_name": "불가리아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 7,
+  "pk": "BR",
   "fields": {
-    "name": "Angola",
-    "code": "AO"
+    "english_name": "Brazil",
+    "native_name": "브라질"
   }
 },
 {
   "model": "movies.country",
-  "pk": 8,
+  "pk": "CA",
   "fields": {
-    "name": "Anguilla",
-    "code": "AI"
+    "english_name": "Canada",
+    "native_name": "캐나다"
   }
 },
 {
   "model": "movies.country",
-  "pk": 9,
+  "pk": "CH",
   "fields": {
-    "name": "Antarctica",
-    "code": "AQ"
+    "english_name": "Switzerland",
+    "native_name": "스위스"
   }
 },
 {
   "model": "movies.country",
-  "pk": 10,
+  "pk": "CI",
   "fields": {
-    "name": "Antigua and Barbuda",
-    "code": "AG"
+    "english_name": "Cote D'Ivoire",
+    "native_name": "코트디부아르"
   }
 },
 {
   "model": "movies.country",
-  "pk": 11,
+  "pk": "CZ",
   "fields": {
-    "name": "Argentina",
-    "code": "AR"
+    "english_name": "Czech Republic",
+    "native_name": "체코"
   }
 },
 {
   "model": "movies.country",
-  "pk": 12,
+  "pk": "DE",
   "fields": {
-    "name": "Armenia",
-    "code": "AM"
+    "english_name": "Germany",
+    "native_name": "독일"
   }
 },
 {
   "model": "movies.country",
-  "pk": 13,
+  "pk": "DK",
   "fields": {
-    "name": "Aruba",
-    "code": "AW"
+    "english_name": "Denmark",
+    "native_name": "덴마크"
   }
 },
 {
   "model": "movies.country",
-  "pk": 14,
+  "pk": "EE",
   "fields": {
-    "name": "Australia",
-    "code": "AU"
+    "english_name": "Estonia",
+    "native_name": "에스토니아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 15,
+  "pk": "ES",
   "fields": {
-    "name": "Austria",
-    "code": "AT"
+    "english_name": "Spain",
+    "native_name": "스페인"
   }
 },
 {
   "model": "movies.country",
-  "pk": 16,
+  "pk": "FI",
   "fields": {
-    "name": "Azerbaijan",
-    "code": "AZ"
+    "english_name": "Finland",
+    "native_name": "핀란드"
   }
 },
 {
   "model": "movies.country",
-  "pk": 17,
+  "pk": "FR",
   "fields": {
-    "name": "Bahamas",
-    "code": "BS"
+    "english_name": "France",
+    "native_name": "프랑스"
   }
 },
 {
   "model": "movies.country",
-  "pk": 18,
+  "pk": "GB",
   "fields": {
-    "name": "Bahrain",
-    "code": "BH"
+    "english_name": "United Kingdom",
+    "native_name": "영국"
   }
 },
 {
   "model": "movies.country",
-  "pk": 19,
+  "pk": "HK",
   "fields": {
-    "name": "Bangladesh",
-    "code": "BD"
+    "english_name": "Hong Kong",
+    "native_name": "홍콩, 중국 특별행정구"
   }
 },
 {
   "model": "movies.country",
-  "pk": 20,
+  "pk": "HR",
   "fields": {
-    "name": "Barbados",
-    "code": "BB"
+    "english_name": "Croatia",
+    "native_name": "크로아티아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 21,
+  "pk": "HU",
   "fields": {
-    "name": "Belarus",
-    "code": "BY"
+    "english_name": "Hungary",
+    "native_name": "헝가리"
   }
 },
 {
   "model": "movies.country",
-  "pk": 22,
+  "pk": "ID",
   "fields": {
-    "name": "Belgium",
-    "code": "BE"
+    "english_name": "Indonesia",
+    "native_name": "인도네시아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 23,
+  "pk": "IE",
   "fields": {
-    "name": "Belize",
-    "code": "BZ"
+    "english_name": "Ireland",
+    "native_name": "아일랜드"
   }
 },
 {
   "model": "movies.country",
-  "pk": 24,
+  "pk": "IN",
   "fields": {
-    "name": "Benin",
-    "code": "BJ"
+    "english_name": "India",
+    "native_name": "인도"
   }
 },
 {
   "model": "movies.country",
-  "pk": 25,
+  "pk": "IT",
   "fields": {
-    "name": "Bermuda",
-    "code": "BM"
+    "english_name": "Italy",
+    "native_name": "이탈리아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 26,
+  "pk": "JP",
   "fields": {
-    "name": "Bhutan",
-    "code": "BT"
+    "english_name": "Japan",
+    "native_name": "일본"
   }
 },
 {
   "model": "movies.country",
-  "pk": 27,
+  "pk": "KE",
   "fields": {
-    "name": "Bolivia",
-    "code": "BO"
+    "english_name": "Kenya",
+    "native_name": "케냐"
   }
 },
 {
   "model": "movies.country",
-  "pk": 28,
+  "pk": "KR",
   "fields": {
-    "name": "Bosnia and Herzegovina",
-    "code": "BA"
+    "english_name": "South Korea",
+    "native_name": "대한민국"
   }
 },
 {
   "model": "movies.country",
-  "pk": 29,
+  "pk": "LT",
   "fields": {
-    "name": "Botswana",
-    "code": "BW"
+    "english_name": "Lithuania",
+    "native_name": "리투아니아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 30,
+  "pk": "MX",
   "fields": {
-    "name": "Bouvet Island",
-    "code": "BV"
+    "english_name": "Mexico",
+    "native_name": "멕시코"
   }
 },
 {
   "model": "movies.country",
-  "pk": 31,
+  "pk": "NL",
   "fields": {
-    "name": "Brazil",
-    "code": "BR"
+    "english_name": "Netherlands",
+    "native_name": "네덜란드"
   }
 },
 {
   "model": "movies.country",
-  "pk": 32,
+  "pk": "NO",
   "fields": {
-    "name": "British Indian Ocean Territory",
-    "code": "IO"
+    "english_name": "Norway",
+    "native_name": "노르웨이"
   }
 },
 {
   "model": "movies.country",
-  "pk": 33,
+  "pk": "NZ",
   "fields": {
-    "name": "Brunei Darussalam",
-    "code": "BN"
+    "english_name": "New Zealand",
+    "native_name": "뉴질랜드"
   }
 },
 {
   "model": "movies.country",
-  "pk": 34,
+  "pk": "PH",
   "fields": {
-    "name": "Bulgaria",
-    "code": "BG"
+    "english_name": "Philippines",
+    "native_name": "필리핀"
   }
 },
 {
   "model": "movies.country",
-  "pk": 35,
+  "pk": "PL",
   "fields": {
-    "name": "Burkina Faso",
-    "code": "BF"
+    "english_name": "Poland",
+    "native_name": "폴란드"
   }
 },
 {
   "model": "movies.country",
-  "pk": 36,
+  "pk": "PT",
   "fields": {
-    "name": "Burundi",
-    "code": "BI"
+    "english_name": "Portugal",
+    "native_name": "포르투갈"
   }
 },
 {
   "model": "movies.country",
-  "pk": 37,
+  "pk": "RS",
   "fields": {
-    "name": "Cambodia",
-    "code": "KH"
+    "english_name": "Serbia",
+    "native_name": "세르비아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 38,
+  "pk": "RU",
   "fields": {
-    "name": "Cameroon",
-    "code": "CM"
+    "english_name": "Russia",
+    "native_name": "러시아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 39,
+  "pk": "SE",
   "fields": {
-    "name": "Canada",
-    "code": "CA"
+    "english_name": "Sweden",
+    "native_name": "스웨덴"
   }
 },
 {
   "model": "movies.country",
-  "pk": 40,
+  "pk": "SK",
   "fields": {
-    "name": "Cape Verde",
-    "code": "CV"
+    "english_name": "Slovakia",
+    "native_name": "슬로바키아"
   }
 },
 {
   "model": "movies.country",
-  "pk": 41,
+  "pk": "TR",
   "fields": {
-    "name": "Cayman Islands",
-    "code": "KY"
+    "english_name": "Turkey",
+    "native_name": "터키"
   }
 },
 {
   "model": "movies.country",
-  "pk": 42,
+  "pk": "US",
   "fields": {
-    "name": "Central African Republic",
-    "code": "CF"
+    "english_name": "United States of America",
+    "native_name": "미국"
   }
 },
 {
   "model": "movies.country",
-  "pk": 43,
+  "pk": "ZA",
   "fields": {
-    "name": "Chad",
-    "code": "TD"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 44,
-  "fields": {
-    "name": "Chile",
-    "code": "CL"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 45,
-  "fields": {
-    "name": "China",
-    "code": "CN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 46,
-  "fields": {
-    "name": "Christmas Island",
-    "code": "CX"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 47,
-  "fields": {
-    "name": "Cocos (Keeling) Islands",
-    "code": "CC"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 48,
-  "fields": {
-    "name": "Colombia",
-    "code": "CO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 49,
-  "fields": {
-    "name": "Comoros",
-    "code": "KM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 50,
-  "fields": {
-    "name": "Congo",
-    "code": "CG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 51,
-  "fields": {
-    "name": "Congo, The Democratic Republic of the",
-    "code": "CD"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 52,
-  "fields": {
-    "name": "Cook Islands",
-    "code": "CK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 53,
-  "fields": {
-    "name": "Costa Rica",
-    "code": "CR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 54,
-  "fields": {
-    "name": "Croatia",
-    "code": "HR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 55,
-  "fields": {
-    "name": "Cuba",
-    "code": "CU"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 56,
-  "fields": {
-    "name": "Cyprus",
-    "code": "CY"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 57,
-  "fields": {
-    "name": "Czech Republic",
-    "code": "CZ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 58,
-  "fields": {
-    "name": "Denmark",
-    "code": "DK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 59,
-  "fields": {
-    "name": "Djibouti",
-    "code": "DJ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 60,
-  "fields": {
-    "name": "Dominica",
-    "code": "DM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 61,
-  "fields": {
-    "name": "Dominican Republic",
-    "code": "DO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 62,
-  "fields": {
-    "name": "Ecuador",
-    "code": "EC"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 63,
-  "fields": {
-    "name": "Egypt",
-    "code": "EG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 64,
-  "fields": {
-    "name": "El Salvador",
-    "code": "SV"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 65,
-  "fields": {
-    "name": "Equatorial Guinea",
-    "code": "GQ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 66,
-  "fields": {
-    "name": "Eritrea",
-    "code": "ER"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 67,
-  "fields": {
-    "name": "Estonia",
-    "code": "EE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 68,
-  "fields": {
-    "name": "Ethiopia",
-    "code": "ET"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 69,
-  "fields": {
-    "name": "Falkland Islands (Malvinas)",
-    "code": "FK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 70,
-  "fields": {
-    "name": "Faroe Islands",
-    "code": "FO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 71,
-  "fields": {
-    "name": "Fiji",
-    "code": "FJ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 72,
-  "fields": {
-    "name": "Finland",
-    "code": "FI"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 73,
-  "fields": {
-    "name": "France",
-    "code": "FR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 74,
-  "fields": {
-    "name": "French Guiana",
-    "code": "GF"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 75,
-  "fields": {
-    "name": "French Polynesia",
-    "code": "PF"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 76,
-  "fields": {
-    "name": "French Southern Territories",
-    "code": "TF"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 77,
-  "fields": {
-    "name": "Gabon",
-    "code": "GA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 78,
-  "fields": {
-    "name": "Gambia",
-    "code": "GM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 79,
-  "fields": {
-    "name": "Georgia",
-    "code": "GE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 80,
-  "fields": {
-    "name": "Germany",
-    "code": "DE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 81,
-  "fields": {
-    "name": "Ghana",
-    "code": "GH"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 82,
-  "fields": {
-    "name": "Gibraltar",
-    "code": "GI"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 83,
-  "fields": {
-    "name": "Greece",
-    "code": "GR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 84,
-  "fields": {
-    "name": "Greenland",
-    "code": "GL"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 85,
-  "fields": {
-    "name": "Grenada",
-    "code": "GD"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 86,
-  "fields": {
-    "name": "Guadeloupe",
-    "code": "GP"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 87,
-  "fields": {
-    "name": "Guam",
-    "code": "GU"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 88,
-  "fields": {
-    "name": "Guatemala",
-    "code": "GT"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 89,
-  "fields": {
-    "name": "Guernsey",
-    "code": "GG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 90,
-  "fields": {
-    "name": "Guinea",
-    "code": "GN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 91,
-  "fields": {
-    "name": "Guinea-Bissau",
-    "code": "GW"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 92,
-  "fields": {
-    "name": "Guyana",
-    "code": "GY"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 93,
-  "fields": {
-    "name": "Haiti",
-    "code": "HT"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 94,
-  "fields": {
-    "name": "Heard Island and Mcdonald Islands",
-    "code": "HM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 95,
-  "fields": {
-    "name": "Holy See (Vatican City State)",
-    "code": "VA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 96,
-  "fields": {
-    "name": "Honduras",
-    "code": "HN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 97,
-  "fields": {
-    "name": "Hong Kong",
-    "code": "HK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 98,
-  "fields": {
-    "name": "Hungary",
-    "code": "HU"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 99,
-  "fields": {
-    "name": "Iceland",
-    "code": "IS"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 100,
-  "fields": {
-    "name": "India",
-    "code": "IN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 101,
-  "fields": {
-    "name": "Indonesia",
-    "code": "ID"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 102,
-  "fields": {
-    "name": "Iran, Islamic Republic Of",
-    "code": "IR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 103,
-  "fields": {
-    "name": "Iraq",
-    "code": "IQ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 104,
-  "fields": {
-    "name": "Ireland",
-    "code": "IE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 105,
-  "fields": {
-    "name": "Isle of Man",
-    "code": "IM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 106,
-  "fields": {
-    "name": "Israel",
-    "code": "IL"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 107,
-  "fields": {
-    "name": "Italy",
-    "code": "IT"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 108,
-  "fields": {
-    "name": "Jamaica",
-    "code": "JM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 109,
-  "fields": {
-    "name": "Japan",
-    "code": "JP"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 110,
-  "fields": {
-    "name": "Jersey",
-    "code": "JE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 111,
-  "fields": {
-    "name": "Jordan",
-    "code": "JO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 112,
-  "fields": {
-    "name": "Kazakhstan",
-    "code": "KZ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 113,
-  "fields": {
-    "name": "Kenya",
-    "code": "KE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 114,
-  "fields": {
-    "name": "Kiribati",
-    "code": "KI"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 115,
-  "fields": {
-    "name": "Korea, Republic of",
-    "code": "KR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 116,
-  "fields": {
-    "name": "Kuwait",
-    "code": "KW"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 117,
-  "fields": {
-    "name": "Kyrgyzstan",
-    "code": "KG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 118,
-  "fields": {
-    "name": "Latvia",
-    "code": "LV"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 119,
-  "fields": {
-    "name": "Lebanon",
-    "code": "LB"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 120,
-  "fields": {
-    "name": "Lesotho",
-    "code": "LS"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 121,
-  "fields": {
-    "name": "Liberia",
-    "code": "LR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 122,
-  "fields": {
-    "name": "Libyan Arab Jamahiriya",
-    "code": "LY"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 123,
-  "fields": {
-    "name": "Liechtenstein",
-    "code": "LI"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 124,
-  "fields": {
-    "name": "Lithuania",
-    "code": "LT"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 125,
-  "fields": {
-    "name": "Luxembourg",
-    "code": "LU"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 126,
-  "fields": {
-    "name": "Macao",
-    "code": "MO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 127,
-  "fields": {
-    "name": "Macedonia, The Former Yugoslav Republic of",
-    "code": "MK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 128,
-  "fields": {
-    "name": "Madagascar",
-    "code": "MG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 129,
-  "fields": {
-    "name": "Malawi",
-    "code": "MW"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 130,
-  "fields": {
-    "name": "Malaysia",
-    "code": "MY"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 131,
-  "fields": {
-    "name": "Maldives",
-    "code": "MV"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 132,
-  "fields": {
-    "name": "Mali",
-    "code": "ML"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 133,
-  "fields": {
-    "name": "Malta",
-    "code": "MT"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 134,
-  "fields": {
-    "name": "Marshall Islands",
-    "code": "MH"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 135,
-  "fields": {
-    "name": "Martinique",
-    "code": "MQ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 136,
-  "fields": {
-    "name": "Mauritania",
-    "code": "MR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 137,
-  "fields": {
-    "name": "Mauritius",
-    "code": "MU"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 138,
-  "fields": {
-    "name": "Mayotte",
-    "code": "YT"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 139,
-  "fields": {
-    "name": "Mexico",
-    "code": "MX"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 140,
-  "fields": {
-    "name": "Micronesia, Federated States of",
-    "code": "FM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 141,
-  "fields": {
-    "name": "Moldova, Republic of",
-    "code": "MD"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 142,
-  "fields": {
-    "name": "Monaco",
-    "code": "MC"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 143,
-  "fields": {
-    "name": "Mongolia",
-    "code": "MN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 144,
-  "fields": {
-    "name": "Montserrat",
-    "code": "MS"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 145,
-  "fields": {
-    "name": "Morocco",
-    "code": "MA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 146,
-  "fields": {
-    "name": "Mozambique",
-    "code": "MZ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 147,
-  "fields": {
-    "name": "Myanmar",
-    "code": "MM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 148,
-  "fields": {
-    "name": "Namibia",
-    "code": "NA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 149,
-  "fields": {
-    "name": "Nauru",
-    "code": "NR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 150,
-  "fields": {
-    "name": "Nepal",
-    "code": "NP"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 151,
-  "fields": {
-    "name": "Netherlands",
-    "code": "NL"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 152,
-  "fields": {
-    "name": "Netherlands Antilles",
-    "code": "AN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 153,
-  "fields": {
-    "name": "New Caledonia",
-    "code": "NC"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 154,
-  "fields": {
-    "name": "New Zealand",
-    "code": "NZ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 155,
-  "fields": {
-    "name": "Nicaragua",
-    "code": "NI"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 156,
-  "fields": {
-    "name": "Niger",
-    "code": "NE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 157,
-  "fields": {
-    "name": "Nigeria",
-    "code": "NG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 158,
-  "fields": {
-    "name": "Niue",
-    "code": "NU"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 159,
-  "fields": {
-    "name": "Norfolk Island",
-    "code": "NF"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 160,
-  "fields": {
-    "name": "Northern Mariana Islands",
-    "code": "MP"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 161,
-  "fields": {
-    "name": "Norway",
-    "code": "NO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 162,
-  "fields": {
-    "name": "Oman",
-    "code": "OM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 163,
-  "fields": {
-    "name": "Pakistan",
-    "code": "PK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 164,
-  "fields": {
-    "name": "Palau",
-    "code": "PW"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 165,
-  "fields": {
-    "name": "Palestinian Territory, Occupied",
-    "code": "PS"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 166,
-  "fields": {
-    "name": "Panama",
-    "code": "PA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 167,
-  "fields": {
-    "name": "Papua New Guinea",
-    "code": "PG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 168,
-  "fields": {
-    "name": "Paraguay",
-    "code": "PY"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 169,
-  "fields": {
-    "name": "Peru",
-    "code": "PE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 170,
-  "fields": {
-    "name": "Philippines",
-    "code": "PH"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 171,
-  "fields": {
-    "name": "Pitcairn",
-    "code": "PN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 172,
-  "fields": {
-    "name": "Poland",
-    "code": "PL"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 173,
-  "fields": {
-    "name": "Portugal",
-    "code": "PT"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 174,
-  "fields": {
-    "name": "Puerto Rico",
-    "code": "PR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 175,
-  "fields": {
-    "name": "Qatar",
-    "code": "QA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 176,
-  "fields": {
-    "name": "Reunion",
-    "code": "RE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 177,
-  "fields": {
-    "name": "Romania",
-    "code": "RO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 178,
-  "fields": {
-    "name": "Russian Federation",
-    "code": "RU"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 179,
-  "fields": {
-    "name": "RWANDA",
-    "code": "RW"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 180,
-  "fields": {
-    "name": "Saint Helena",
-    "code": "SH"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 181,
-  "fields": {
-    "name": "Saint Kitts and Nevis",
-    "code": "KN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 182,
-  "fields": {
-    "name": "Saint Lucia",
-    "code": "LC"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 183,
-  "fields": {
-    "name": "Saint Pierre and Miquelon",
-    "code": "PM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 184,
-  "fields": {
-    "name": "Saint Vincent and the Grenadines",
-    "code": "VC"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 185,
-  "fields": {
-    "name": "Samoa",
-    "code": "WS"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 186,
-  "fields": {
-    "name": "San Marino",
-    "code": "SM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 187,
-  "fields": {
-    "name": "Sao Tome and Principe",
-    "code": "ST"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 188,
-  "fields": {
-    "name": "Saudi Arabia",
-    "code": "SA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 189,
-  "fields": {
-    "name": "Senegal",
-    "code": "SN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 190,
-  "fields": {
-    "name": "Serbia and Montenegro",
-    "code": "CS"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 191,
-  "fields": {
-    "name": "Seychelles",
-    "code": "SC"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 192,
-  "fields": {
-    "name": "Sierra Leone",
-    "code": "SL"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 193,
-  "fields": {
-    "name": "Singapore",
-    "code": "SG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 194,
-  "fields": {
-    "name": "Slovakia",
-    "code": "SK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 195,
-  "fields": {
-    "name": "Slovenia",
-    "code": "SI"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 196,
-  "fields": {
-    "name": "Solomon Islands",
-    "code": "SB"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 197,
-  "fields": {
-    "name": "Somalia",
-    "code": "SO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 198,
-  "fields": {
-    "name": "South Africa",
-    "code": "ZA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 199,
-  "fields": {
-    "name": "South Georgia and the South Sandwich Islands",
-    "code": "GS"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 200,
-  "fields": {
-    "name": "Spain",
-    "code": "ES"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 201,
-  "fields": {
-    "name": "Sri Lanka",
-    "code": "LK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 202,
-  "fields": {
-    "name": "Sudan",
-    "code": "SD"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 203,
-  "fields": {
-    "name": "Suriname",
-    "code": "SR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 204,
-  "fields": {
-    "name": "Svalbard and Jan Mayen",
-    "code": "SJ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 205,
-  "fields": {
-    "name": "Swaziland",
-    "code": "SZ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 206,
-  "fields": {
-    "name": "Sweden",
-    "code": "SE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 207,
-  "fields": {
-    "name": "Switzerland",
-    "code": "CH"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 208,
-  "fields": {
-    "name": "Syrian Arab Republic",
-    "code": "SY"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 209,
-  "fields": {
-    "name": "Taiwan, Province of China",
-    "code": "TW"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 210,
-  "fields": {
-    "name": "Tajikistan",
-    "code": "TJ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 211,
-  "fields": {
-    "name": "Tanzania, United Republic of",
-    "code": "TZ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 212,
-  "fields": {
-    "name": "Thailand",
-    "code": "TH"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 213,
-  "fields": {
-    "name": "Timor-Leste",
-    "code": "TL"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 214,
-  "fields": {
-    "name": "Togo",
-    "code": "TG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 215,
-  "fields": {
-    "name": "Tokelau",
-    "code": "TK"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 216,
-  "fields": {
-    "name": "Tonga",
-    "code": "TO"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 217,
-  "fields": {
-    "name": "Trinidad and Tobago",
-    "code": "TT"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 218,
-  "fields": {
-    "name": "Tunisia",
-    "code": "TN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 219,
-  "fields": {
-    "name": "Turkey",
-    "code": "TR"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 220,
-  "fields": {
-    "name": "Turkmenistan",
-    "code": "TM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 221,
-  "fields": {
-    "name": "Turks and Caicos Islands",
-    "code": "TC"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 222,
-  "fields": {
-    "name": "Tuvalu",
-    "code": "TV"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 223,
-  "fields": {
-    "name": "Uganda",
-    "code": "UG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 224,
-  "fields": {
-    "name": "Ukraine",
-    "code": "UA"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 225,
-  "fields": {
-    "name": "United Arab Emirates",
-    "code": "AE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 226,
-  "fields": {
-    "name": "United Kingdom",
-    "code": "GB"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 227,
-  "fields": {
-    "name": "United States",
-    "code": "US"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 228,
-  "fields": {
-    "name": "United States Minor Outlying Islands",
-    "code": "UM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 229,
-  "fields": {
-    "name": "Uruguay",
-    "code": "UY"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 230,
-  "fields": {
-    "name": "Uzbekistan",
-    "code": "UZ"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 231,
-  "fields": {
-    "name": "Vanuatu",
-    "code": "VU"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 232,
-  "fields": {
-    "name": "Venezuela",
-    "code": "VE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 233,
-  "fields": {
-    "name": "Viet Nam",
-    "code": "VN"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 234,
-  "fields": {
-    "name": "Virgin Islands, British",
-    "code": "VG"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 235,
-  "fields": {
-    "name": "Virgin Islands, U.S.",
-    "code": "VI"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 236,
-  "fields": {
-    "name": "Wallis and Futuna",
-    "code": "WF"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 237,
-  "fields": {
-    "name": "Western Sahara",
-    "code": "EH"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 238,
-  "fields": {
-    "name": "Yemen",
-    "code": "YE"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 239,
-  "fields": {
-    "name": "Zambia",
-    "code": "ZM"
-  }
-},
-{
-  "model": "movies.country",
-  "pk": 240,
-  "fields": {
-    "name": "Zimbabw",
-    "code": "ZN"
+    "english_name": "South Africa",
+    "native_name": "남아프리카"
   }
 },
 {
@@ -2050,6 +474,238 @@
   "pk": 10770,
   "fields": {
     "name": "TV 영화"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 3,
+  "fields": {
+    "name": "Google Play Movies",
+    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 8,
+  "fields": {
+    "name": "Netflix",
+    "logo_path": "/t2yyOv40HZeVlLjYsCsPHnWLk4W.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 11,
+  "fields": {
+    "name": "Mubi",
+    "logo_path": "/bVR4Z1LCHY7gidXAJF5pMa4QrDS.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 96,
+  "fields": {
+    "name": "Naver Store",
+    "logo_path": "/a4ciTQc27FsgdUp7PCrToHPygcw.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 97,
+  "fields": {
+    "name": "Watcha",
+    "logo_path": "/vXXZx0aWQtDv2klvObNugm4dQMN.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 100,
+  "fields": {
+    "name": "GuideDoc",
+    "logo_path": "/iX0pvJ2GFATbVIH5IHMwG0ffIdV.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 119,
+  "fields": {
+    "name": "Amazon Prime Video",
+    "logo_path": "/emthp39XA2YScoYL1p0sdbAH2WA.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 190,
+  "fields": {
+    "name": "Curiosity Stream",
+    "logo_path": "/67Ee4E6qOkQGHeUTArdJ1qRxzR2.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 309,
+  "fields": {
+    "name": "Sun Nxt",
+    "logo_path": "/uW4dPCcbXaaFTyfL5HwhuDt5akK.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 315,
+  "fields": {
+    "name": "Hoichoi",
+    "logo_path": "/d4vHcXY9rwnr763wQns2XJThclt.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 337,
+  "fields": {
+    "name": "Disney Plus",
+    "logo_path": "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 350,
+  "fields": {
+    "name": "Apple TV Plus",
+    "logo_path": "/6uhKBfmtzFqOcLousHwZuzcrScK.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 356,
+  "fields": {
+    "name": "wavve",
+    "logo_path": "/2ioan5BX5L9tz4fIGU93blTeFhv.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 444,
+  "fields": {
+    "name": "Dekkoo",
+    "logo_path": "/u2H29LCxRzjZVUoZUQAHKm5P8Zc.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 445,
+  "fields": {
+    "name": "Classix",
+    "logo_path": "/iaMw6nOyxUzXSacrLQ0Au6CfZkc.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 475,
+  "fields": {
+    "name": "DOCSVILLE",
+    "logo_path": "/bvcdVO7SDHKEa6D40g1jntXKNj.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 521,
+  "fields": {
+    "name": "Spamflix",
+    "logo_path": "/xN97FFkFAdY1JvHhS4zyPD4URgD.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 538,
+  "fields": {
+    "name": "Plex",
+    "logo_path": "/wDWvnupneMbY6RhBTHQC9zU0SCX.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 546,
+  "fields": {
+    "name": "WOW Presents Plus",
+    "logo_path": "/mgD0T960hnYU4gBxbPPBrcDfgWg.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 551,
+  "fields": {
+    "name": "Magellan TV",
+    "logo_path": "/gekkP93StjYdiMAInViVmrnldNY.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 554,
+  "fields": {
+    "name": "BroadwayHD",
+    "logo_path": "/xLu1rkZNOKuNnRNr70wySosfTBf.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 559,
+  "fields": {
+    "name": "Filmzie",
+    "logo_path": "/olmH7t5tEng8Yuq33KmvpvaaVIg.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 567,
+  "fields": {
+    "name": "True Story",
+    "logo_path": "/osREemsc9uUB2J8VTkQeAVk2fu9.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 569,
+  "fields": {
+    "name": "DocAlliance Films",
+    "logo_path": "/aQ1ritN00jXc7RAFfUoQKGAAfp7.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 677,
+  "fields": {
+    "name": "Eventive",
+    "logo_path": "/fadQYOyKL0tqfyj012nYJxm3N2I.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 692,
+  "fields": {
+    "name": "Cultpix",
+    "logo_path": "/59azlQKUgFdYq6QI5QEAxIeecyL.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 701,
+  "fields": {
+    "name": "FilmBox+",
+    "logo_path": "/4FqTBYsUSZgS9z9UGKgxSDBbtc8.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 1771,
+  "fields": {
+    "name": "Takflix",
+    "logo_path": "/cnIHBy3uLWhHRR7VeWQhK3ZsYP0.jpg"
+  }
+},
+{
+  "model": "movies.watchproviders",
+  "pk": 1796,
+  "fields": {
+    "name": "Netflix basic with Ads",
+    "logo_path": "/mShqQVDhHoK7VUbfYG3Un6xE8Mv.jpg"
   }
 }
 ]
