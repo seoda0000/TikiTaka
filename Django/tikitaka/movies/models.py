@@ -2,12 +2,19 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField 
 
 # Create your models here.
+
+class Country(models.Model):
+    name = models.CharField(max_length=50)
+    code = models.CharField(max_length=50)
+
+
 class Genre(models.Model):
     id = models.IntegerField(unique=True, primary_key=True)
     name = models.CharField(max_length=50)
 
 
 class Movie(models.Model):
+    # 기본 항목
     adult = models.BooleanField()
     backdrop_path = models.CharField(max_length=100)
     genres = models.ManyToManyField(Genre, related_name="movies")
@@ -21,3 +28,7 @@ class Movie(models.Model):
     video = models.BooleanField()
     vote_average = models.FloatField()
     vote_count = models.IntegerField()
+
+    # 디테일 항목
+    runtime = models.IntegerField()
+    status = models.CharField(max_length=100)
