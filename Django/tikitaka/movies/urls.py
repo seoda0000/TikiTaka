@@ -9,5 +9,9 @@ urlpatterns = [
     path('now_playing_movie_video/', views.now_playing_movie_video),
     path('search_movie/', views.search_movie),
     path('search_movie_people/', views.search_movie_people),
+
+    # DB에서 사용하는 링크
+    path('get_genres/', views.get_genres),
+    path('get_movies/', views.get_movies),
     
 ]

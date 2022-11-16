@@ -2,6 +2,7 @@
 # from rest_framework.response import Response
 from django.http.response import JsonResponse
 from django.conf import settings
+from .models import Movie, Genre
 
 import re
 import requests
@@ -21,6 +22,8 @@ def popular_movie(request):
     r = requests.get(url, params=payload)
     rdata = r.json()['results']
     return JsonResponse(rdata, safe=False) 
+
+
 
 
 # 상위 영화 목록 가져오기
@@ -196,3 +199,52 @@ def search_movie_people(request):
             break
 
     return search_result
+
+# DB : 장르 목록 가져오기
+def get_genres(request):
+
+    # 장르 목록
+    payload = {
+        'api_key': API_KEY,
+        'language': 'ko-KR',
+        }
+    url = 'https://api.themoviedb.org/3/genre/movie/list'
+    r = requests.get(url, params=payload)
+    rdata = r.json()['genres']
+    for data in rdata:
+        genre = Genre(id=data['id'])
+        genre.name = data['name']
+        genre.save()
+
+    # 장르 목록 출력
+    return JsonResponse(rdata, safe=False) 
+
+# DB : 영화 목록 가져오기
+def get_movies(request):
+    payload = {
+        'api_key': API_KEY,
+        'language': 'ko-KR',
+        'region': 'KR'
+        }
+    url = 'https://api.themoviedb.org/3/movie/popular'
+    r = requests.get(url, params=payload)
+    rdata = r.json()['results']
+    for data in rdata:
+        movie = Movie(id=data['id'])
+        movie.adult = data['adult']
+        movie.backdrop_path = data['backdrop_path']
+        movie.original_title = data['original_title']
+        movie.overview = data['overview']
+        movie.popularity = data['popularity']
+        movie.poster_path = data['poster_path']
+        movie.release_date = data['release_date']
+        movie.title = data['title']
+        movie.video = data['video']
+        movie.vote_average = data['vote_average']
+        movie.vote_count = data['vote_count']
+        movie.save()
+        for id in data['genre_ids']:
+            movie.genres.add(Genre.objects.get(id=id))
+    # for data in rdata:
+
+    return JsonResponse(rdata, safe=False) 
