@@ -1,11 +1,24 @@
-# from django.shortcuts import render
-# from rest_framework.response import Response
-from django.http.response import JsonResponse
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import authentication_classes
+from rest_framework.decorators import permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+
 from django.conf import settings
+from django.core import serializers
+from django.http.response import JsonResponse
+from django.shortcuts import render, get_list_or_404, get_object_or_404
+from django.db.models import Q
+
 from .models import Movie, Genre, Country, WatchProvider, People
+from .serializers import PosterListSerializer, PeopleSerializer
 
 import re
-import json
 import requests
 
 
@@ -13,32 +26,61 @@ API_KEY = getattr(settings, 'TMDB_API_KEY')
 
 
 # 인기 영화 목록 가져오기
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
 def popular_movie(request):
-    payload = {
-        'api_key': API_KEY,
-        'language': 'ko-KR',
-        'region': 'KR'
-        }
-    url = 'https://api.themoviedb.org/3/movie/popular'
-    r = requests.get(url, params=payload)
-    rdata = r.json()['results']
-    return JsonResponse(rdata, safe=False) 
-
-
+    if request.method == 'GET':
+        movies = Movie.objects.order_by('-popularity')
+        serializer = PosterListSerializer(movies, many=True)
+        return Response(serializer.data)
 
 
 # 상위 영화 목록 가져오기
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
 def top_rated_movie(request):
-    payload = {
-        'api_key': API_KEY,
-        'language': 'ko-KR',
-        'page': 1,
-        'region': 'KR'
-        }
-    url = 'https://api.themoviedb.org/3/movie/top_rated'
-    r = requests.get(url, params=payload)
-    rdata = r.json()['results']
-    return JsonResponse(rdata, safe=False)
+    if request.method == 'GET':
+        movies = Movie.objects.order_by('-vote_average')
+        serializer = PosterListSerializer(movies, many=True)
+        return Response(serializer.data)
+
+
+
+# 영화 검색
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def search_movie(request):
+    search_input = request.GET.get('search','')
+    movies = Movie.objects.all()
+    if search_input:
+        search_result = movies.filter(title__contains=search_input)
+        serializer = PosterListSerializer(search_result, many=True)
+    else:
+        serializer = PosterListSerializer(movies, many=True)
+    return Response(serializer.data)
+
+
+
+# 영화인 검색
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def search_movie_people(request):
+    search_input = request.GET.get('search','') # value값이 없을 때 '' 반환
+    people = People.objects.all()
+    if search_input:
+        search_result = people.filter(
+            Q(name__contains=search_input) |
+            Q(name_origin__contains=search_input)
+        )
+        serializer = PeopleSerializer(search_result, many=True)
+    else:
+        serializer = PeopleSerializer(people, many=True)
+    return Response(serializer.data)
+
 
 
 # 상영 중인 영화 목록 가져오기
@@ -118,88 +160,9 @@ def now_playing_movie_video(request):
 
 
 
-# 키워드로 영화 검색
-def search_movie(request):
-
-    # 검색 키워드
-    search_input = input()
-    p = 1
-    search_result = []
-
-    # 영화 검색
-    while True:
-        payload = {
-            'api_key': API_KEY,
-            'language': 'ko-KR',
-            'page': p,
-            'include_adult': 'true',
-            'query': search_input,
-            # 'region': # 지역 설정 가능 ex. KR
-            }
-        url = 'https://api.themoviedb.org/3/search/movie'
-        r = requests.get(url, params=payload)
-        rdata = r.json()['results']
-
-        if rdata:
-            search_result += rdata
-            p += 1
-        else:
-            break
-
-    return JsonResponse(search_result, safe=False)
 
 
-# 영화인 검색
-def search_movie_people(request):
 
-    # 검색 키워드
-    search_input = input()
-    p = 1
-    search_result = []
-
-    # 영화인 검색
-    while True:
-        payload = {
-            'api_key': API_KEY,
-            'language': 'ko-KR',
-            'page': p,
-            'include_adult': 'true',
-            'query': search_input,
-            # 'region': 'KR',
-            }
-        url = 'https://api.themoviedb.org/3/search/person'
-        r = requests.get(url, params=payload)
-        rdata = r.json()['results']
-
-        if rdata:
-            for data in rdata:
-                ppl_id = str(data['id'])
-                ppl_payload = {
-                    'api_key': API_KEY,
-                    'language': 'ko-KR',
-                    'page': p,
-                    'include_adult': 'true',
-                    'query': search_input,
-                    # 'region': 'KR',
-                }
-                ppl_url = 'https://api.themoviedb.org/3/person/' + ppl_id
-                ppl_r = requests.get(ppl_url, params=ppl_payload)
-                ppl_names = ppl_r.json()['also_known_as']
-
-                # 다국어 이름 중 한글이 있는지 체크
-                hangul_re = re.compile('[\u3131-\u3163\uac00-\ud7a3]+')
-                for name in ppl_names:
-                    if hangul_re.search(name) is not None:
-                        data['name_eng'] = data['name']
-                        data['name'] = name
-                        break
-                        
-            search_result += rdata
-            p += 1
-        else:
-            break
-
-    return search_result
 
 # ==================================================================================
 #                                 DB 구성 영역           
@@ -267,6 +230,7 @@ def get_providers(request):
     return JsonResponse(rdata, safe=False)
 
 
+# 영화 정보 가져오기 : 페이지
 def get_movie(page):
     payload = {
         'api_key': API_KEY,
@@ -338,7 +302,7 @@ def get_movie(page):
         # 출연진 설정
         casts = p_data['cast']
 
-        for c in range(min(10, len(casts))):
+        for c in range(min(5, len(casts))):
             cast = casts[c]
             if People.objects.filter(id=cast['id']):
                 movie.casts.add(People.objects.get(id=cast['id']))
@@ -393,7 +357,8 @@ def get_movie(page):
             for category in categories:
                 if wdata.get(category):
                     for provider in wdata.get(category):
-                        movie.watch_providers.add(WatchProvider.objects.get(id=provider['provider_id']))
+                        if WatchProvider.objects.filter(id=provider['provider_id']):
+                            movie.watch_providers.add(WatchProvider.objects.get(id=provider['provider_id']))
         
 
     return 1
@@ -401,6 +366,6 @@ def get_movie(page):
 
 # DB : 영화 목록 가져오기
 def get_movies(request):
-    for p in range(21, 40):
+    for p in range(1, 101): # 100까지 완료
         get_movie(p)
     return JsonResponse({"data" : "success!"}) 
