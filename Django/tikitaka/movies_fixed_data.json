@@ -477,7 +477,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 3,
   "fields": {
     "name": "Google Play Movies",
@@ -485,7 +485,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 8,
   "fields": {
     "name": "Netflix",
@@ -493,7 +493,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 11,
   "fields": {
     "name": "Mubi",
@@ -501,7 +501,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 96,
   "fields": {
     "name": "Naver Store",
@@ -509,7 +509,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 97,
   "fields": {
     "name": "Watcha",
@@ -517,7 +517,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 100,
   "fields": {
     "name": "GuideDoc",
@@ -525,7 +525,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 119,
   "fields": {
     "name": "Amazon Prime Video",
@@ -533,7 +533,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 190,
   "fields": {
     "name": "Curiosity Stream",
@@ -541,7 +541,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 309,
   "fields": {
     "name": "Sun Nxt",
@@ -549,7 +549,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 315,
   "fields": {
     "name": "Hoichoi",
@@ -557,7 +557,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 337,
   "fields": {
     "name": "Disney Plus",
@@ -565,7 +565,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 350,
   "fields": {
     "name": "Apple TV Plus",
@@ -573,7 +573,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 356,
   "fields": {
     "name": "wavve",
@@ -581,7 +581,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 444,
   "fields": {
     "name": "Dekkoo",
@@ -589,7 +589,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 445,
   "fields": {
     "name": "Classix",
@@ -597,7 +597,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 475,
   "fields": {
     "name": "DOCSVILLE",
@@ -605,7 +605,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 521,
   "fields": {
     "name": "Spamflix",
@@ -613,7 +613,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 538,
   "fields": {
     "name": "Plex",
@@ -621,7 +621,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 546,
   "fields": {
     "name": "WOW Presents Plus",
@@ -629,7 +629,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 551,
   "fields": {
     "name": "Magellan TV",
@@ -637,7 +637,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 554,
   "fields": {
     "name": "BroadwayHD",
@@ -645,7 +645,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 559,
   "fields": {
     "name": "Filmzie",
@@ -653,7 +653,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 567,
   "fields": {
     "name": "True Story",
@@ -661,7 +661,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 569,
   "fields": {
     "name": "DocAlliance Films",
@@ -669,7 +669,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 677,
   "fields": {
     "name": "Eventive",
@@ -677,7 +677,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 692,
   "fields": {
     "name": "Cultpix",
@@ -685,7 +685,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 701,
   "fields": {
     "name": "FilmBox+",
@@ -693,7 +693,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 1771,
   "fields": {
     "name": "Takflix",
@@ -701,7 +701,7 @@
   }
 },
 {
-  "model": "movies.watchproviders",
+  "model": "movies.watchprovider",
   "pk": 1796,
   "fields": {
     "name": "Netflix basic with Ads",

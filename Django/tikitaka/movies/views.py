@@ -2,7 +2,7 @@
 # from rest_framework.response import Response
 from django.http.response import JsonResponse
 from django.conf import settings
-from .models import Movie, Genre, Country, WatchProviders
+from .models import Movie, Genre, Country, WatchProvider, People
 
 import re
 import json
@@ -258,7 +258,7 @@ def get_providers(request):
     r = requests.get(url, params=payload)
     rdata = r.json()['results']
     for data in rdata:
-        provider = WatchProviders(id=data["provider_id"])
+        provider = WatchProvider(id=data["provider_id"])
         provider.name = data["provider_name"]
         provider.logo_path = data["logo_path"]
         provider.save()
@@ -267,29 +267,33 @@ def get_providers(request):
     return JsonResponse(rdata, safe=False)
 
 
-# DB : 영화 목록 가져오기
-def get_movies(request):
+def get_movie(page):
     payload = {
         'api_key': API_KEY,
         'language': 'ko-KR',
-        'region': 'KR'
+        'region': 'KR',
+        'page': page
         }
     url = 'https://api.themoviedb.org/3/movie/popular'
     r = requests.get(url, params=payload)
     rdata = r.json()['results']
+
     for data in rdata:
+
+        if not data.get('overview').strip() or not data.get('poster_path') or not data.get('backdrop_path'):
+            continue
         movie = Movie(id=data['id'])
-        movie.adult = data['adult']
-        movie.backdrop_path = data['backdrop_path']
-        movie.original_title = data['original_title']
-        movie.overview = data['overview']
-        movie.popularity = data['popularity']
-        movie.poster_path = data['poster_path']
-        movie.release_date = data['release_date']
-        movie.title = data['title']
-        movie.video = data['video']
-        movie.vote_average = data['vote_average']
-        movie.vote_count = data['vote_count']
+        movie.adult = data.get('adult')
+        movie.backdrop_path = data.get('backdrop_path')
+        movie.original_title = data.get('original_title')
+        movie.overview = data.get('overview')
+        movie.popularity = data.get('popularity')
+        movie.poster_path = data.get('poster_path')
+        movie.release_date = data.get('release_date')
+        movie.title = data.get('title')
+        movie.video = data.get('video')
+        movie.vote_average = data.get('vote_average')
+        movie.vote_count = data.get('vote_count')
 
 
         # 디테일 정보 가져오기
@@ -304,7 +308,70 @@ def get_movies(request):
         movie.status = d_data['status']
 
 
+        # People 가져오기
+        p_payload = {
+        'api_key': API_KEY,
+        'language': 'ko-KR',
+        }
+        p_url = 'https://api.themoviedb.org/3/movie/' + str(data['id']) + '/credits'
+        p_r = requests.get(p_url, params=p_payload)
+        p_data = p_r.json()
+
+
+        # 감독 설정
+
+        crews = p_data['crew']
+        for crew in crews:
+            if crew['job'] == "Director":
+                if People.objects.filter(id=crew['id']):
+                    movie.director = People.objects.get(id=crew['id'])
+                else:
+                    people = People(id=crew['id'])
+                    people.name = crew['name']
+                    people.department = crew['known_for_department']
+                    people.profile_path = crew['profile_path']
+                    people.save()
+                    movie.director = people
+        
         movie.save()
+
+        # 출연진 설정
+        casts = p_data['cast']
+
+        for c in range(min(10, len(casts))):
+            cast = casts[c]
+            if People.objects.filter(id=cast['id']):
+                movie.casts.add(People.objects.get(id=cast['id']))
+            else:
+                people = People(id=cast['id'])
+
+                # 인물 디테일 조회
+                ppl_id = str(cast['id'])
+                ppl_payload = {
+                    'api_key': API_KEY,
+                    'language': 'ko-KR',
+                }
+                ppl_url = 'https://api.themoviedb.org/3/person/' + ppl_id
+                ppl_r = requests.get(ppl_url, params=ppl_payload)
+                ppl_names = ppl_r.json()['also_known_as']
+
+                # 다국어 이름 중 한글이 있는지 체크
+                hangul_re = re.compile('[\u3131-\u3163\uac00-\ud7a3]+')
+                for name in ppl_names:
+                    if hangul_re.search(name) is not None:
+                        people.name_origin = cast['name']
+                        people.name = name
+                        break
+                else:
+                    people.name = cast['name']
+
+
+
+
+                people.department = cast['known_for_department']
+                people.profile_path = cast['profile_path']
+                people.save()
+                movie.casts.add(people)
 
         # 장르 설정
         for id in data['genre_ids']:
@@ -312,8 +379,31 @@ def get_movies(request):
         
         # 국가 설정
         for country in d_data['production_countries']:
-            movie.countries.add(Country.objects.get(code=country['iso_3166_1']))
+            if Country.objects.filter(iso_3166_1=country['iso_3166_1']):
+                movie.countries.add(Country.objects.get(iso_3166_1=country['iso_3166_1']))
 
+
+        # Watch Provider 설정
+        w_payload = {
+        'api_key': API_KEY
+        }
+        w_url = 'https://api.themoviedb.org/3/movie/' + str(data['id']) + '/watch/providers'
+        w_r = requests.get(w_url, params=w_payload)
+        wdata = w_r.json()['results'].get('KR')
+        if wdata:
+            categories = ["flatrate", "rent", "buy"]
+
+            for category in categories:
+                if wdata.get(category):
+                    for provider in wdata.get(category):
+                        movie.watch_providers.add(WatchProvider.objects.get(id=provider['provider_id']))
         
 
-    return JsonResponse(rdata, safe=False) 
+    return 1
+
+
+# DB : 영화 목록 가져오기
+def get_movies(request):
+    for p in range(11, 21):
+        get_movie(p)
+    return JsonResponse({"data" : "success!"}) 
