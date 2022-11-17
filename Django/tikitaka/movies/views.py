@@ -60,9 +60,7 @@ def search_movie(request):
         movies = movies.filter(
             Q(title__contains=search_input) |
             Q(original_title__icontains=search_input)
-        )
-    if genre_input:
-        movies = movies.filter(
+        ).filter(
             genres__in=genre_input
         ).distinct()
     serializer = PosterListSerializer(movies, many=True)
@@ -414,6 +412,6 @@ def get_movie(page):
 
 # DB : 영화 목록 가져오기
 def get_movies(request):
-    for p in range(41, 61): # 60까지 시도
+    for p in range(81, 101): # 100까지 시도
         get_movie(p)
     return JsonResponse({"data" : "success!"}) 
