@@ -16,7 +16,7 @@ from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.db.models import Q
 
 from .models import Movie, Genre, Country, WatchProvider, People
-from .serializers import PosterListSerializer, PeopleSerializer
+from .serializers import PosterListSerializer, PeopleSerializer, MovieDetailSerializer
 
 import re
 import requests
@@ -54,9 +54,15 @@ def top_rated_movie(request):
 @permission_classes([])
 def search_movie(request):
     search_input = request.GET.get('search','')
-    movies = Movie.objects.all()
-    if search_input:
-        search_result = movies.filter(title__contains=search_input)
+    genre_input = request.GET.getlist('genres[]')
+    movies = Movie.objects.order_by('-popularity')
+    if search_input or genre_input:
+        search_result = movies.filter(
+            Q(title__contains=search_input) |
+            Q(original_title__icontains=search_input)
+        ).filter(
+            genres__in=genre_input
+        ).order_by('-popularity')
         serializer = PosterListSerializer(search_result, many=True)
     else:
         serializer = PosterListSerializer(movies, many=True)
@@ -73,12 +79,23 @@ def search_movie_people(request):
     people = People.objects.all()
     if search_input:
         search_result = people.filter(
-            Q(name__contains=search_input) |
-            Q(name_origin__contains=search_input)
+            Q(name__icontains=search_input) |
+            Q(name_origin__icontains=search_input)
         )
         serializer = PeopleSerializer(search_result, many=True)
     else:
         serializer = PeopleSerializer(people, many=True)
+    return Response(serializer.data)
+
+
+# 영화 디테일 조회
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def movie_detail(request):
+    movie_id = request.GET.get('id','')
+    movie = Movie.objects.get(id=int(movie_id))
+    serializer = MovieDetailSerializer(movie)
     return Response(serializer.data)
 
 

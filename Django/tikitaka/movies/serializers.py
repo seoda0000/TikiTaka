@@ -39,19 +39,25 @@ class PosterListSerializer(serializers.ModelSerializer):
 #         read_only_fields = ('movies',)
 
 
-# class ActorNameSerializer(serializers.ModelSerializer):
+class WatchProviderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = People
+        fields = '__all__'
 
-#     class Meta:
-#         model = Actor
-#         fields = ('name',)
+
+class PeopleShortSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = People
+        fields = ('name', 'profile_path',)
 
 
-# class MovieSerializer(serializers.ModelSerializer):
-#     actors = ActorNameSerializer(many=True, read_only=True)
-#     review_set = ReviewSerializer(many=True, read_only=True)
-#     class Meta:
-#         model = Movie
-#         fields = '__all__'
+class MovieDetailSerializer(serializers.ModelSerializer):
+    director = PeopleShortSerializer(read_only=True)
+    casts = PeopleShortSerializer(many=True, read_only=True)
+    class Meta:
+        model = Movie
+        fields = '__all__'
 
 
 
