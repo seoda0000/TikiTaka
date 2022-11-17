@@ -31,7 +31,7 @@ API_KEY = getattr(settings, 'TMDB_API_KEY')
 @permission_classes([])
 def popular_movie(request):
     if request.method == 'GET':
-        movies = Movie.objects.order_by('-popularity')
+        movies = Movie.objects.order_by('-popularity')[:40]
         serializer = PosterListSerializer(movies, many=True)
         return Response(serializer.data)
 
