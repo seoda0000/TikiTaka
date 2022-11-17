@@ -3,6 +3,8 @@ from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 
+
+
 class Country(models.Model):
     iso_3166_1 = models.CharField(max_length=10, unique=True, primary_key=True)
     english_name = models.CharField(max_length=50)
@@ -41,7 +43,6 @@ class Movie(models.Model):
     poster_path = models.CharField(max_length=200, null=True)
     release_date = models.DateField(null=True)
     title = models.CharField(max_length=100, null=True)
-    video = models.BooleanField(null=True)
     vote_average = models.FloatField(null=True)
     vote_count = models.IntegerField(null=True)
 
@@ -58,3 +59,7 @@ class Movie(models.Model):
     director = models.ForeignKey(People, null=True, on_delete=models.SET_NULL)
 
 
+
+class Backdrop(models.Model):
+    path = models.CharField(max_length=200)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)

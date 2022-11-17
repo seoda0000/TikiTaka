@@ -1,12 +1,21 @@
 from rest_framework import serializers
-from .models import Movie, Country, People, WatchProvider, Genre
+from .models import Movie, Country, People, WatchProvider, Genre, Backdrop
+
+
+
+class BackdropSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Backdrop
+        fields = ('path',)
 
 
 class PosterListSerializer(serializers.ModelSerializer):
+    backdrop_set = BackdropSerializer(many=True, read_only=True)
 
     class Meta:
         model = Movie
-        fields = ('id', 'title', 'original_title', 'poster_path', 'backdrop_path',)
+        fields = ('id', 'title', 'original_title', 'poster_path', 'backdrop_set',)
 
 
 # class MovieNameSerializer(serializers.ModelSerializer):
@@ -58,6 +67,7 @@ class PeopleShortSerializer(serializers.ModelSerializer):
 
 
 class MovieDetailSerializer(serializers.ModelSerializer):
+    backdrop_set = BackdropSerializer(many=True, read_only=True)
     director = PeopleShortSerializer(read_only=True)
     casts = PeopleShortSerializer(many=True, read_only=True)
     watch_providers = WatchProviderSerializer(many=True, read_only=True)

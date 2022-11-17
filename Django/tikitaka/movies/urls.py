@@ -15,5 +15,5 @@ urlpatterns = [
     # path('get_countries/', views.get_countries),
     # path('get_genres/', views.get_genres),
     # path('get_providers/', views.get_providers),
-    # path('get_movies/', views.get_movies),
+    path('get_movies/', views.get_movies),
 ]

@@ -15,7 +15,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.db.models import Q
 
-from .models import Movie, Genre, Country, WatchProvider, People
+from .models import Movie, Genre, Country, WatchProvider, People, Backdrop
 from .serializers import PosterListSerializer, PeopleSerializer, MovieDetailSerializer
 
 import re
@@ -56,16 +56,16 @@ def search_movie(request):
     search_input = request.GET.get('search','')
     genre_input = request.GET.getlist('genres[]')
     movies = Movie.objects.order_by('-popularity')
-    if search_input or genre_input:
-        search_result = movies.filter(
+    if search_input:
+        movies = movies.filter(
             Q(title__contains=search_input) |
             Q(original_title__icontains=search_input)
-        ).filter(
+        )
+    if genre_input:
+        movies = movies.filter(
             genres__in=genre_input
-        ).order_by('-popularity')
-        serializer = PosterListSerializer(search_result, many=True)
-    else:
-        serializer = PosterListSerializer(movies, many=True)
+        ).distinct()
+    serializer = PosterListSerializer(movies, many=True)
     return Response(serializer.data)
 
 
@@ -254,7 +254,7 @@ def get_movie(page):
         'language': 'ko-KR',
         'region': 'KR',
         'page': page
-        }
+    }
     url = 'https://api.themoviedb.org/3/movie/popular'
     r = requests.get(url, params=payload)
     rdata = r.json()['results']
@@ -271,7 +271,6 @@ def get_movie(page):
         movie.poster_path = data.get('poster_path')
         movie.release_date = data.get('release_date')
         movie.title = data.get('title')
-        movie.video = data.get('video')
         movie.vote_average = data.get('vote_average')
         movie.vote_count = data.get('vote_count')
 
@@ -293,13 +292,16 @@ def get_movie(page):
             'api_key': API_KEY,
             'language': 'ko-KR',
         }
-        video_url = 'https://api.themoviedb.org/3/movie/' + movie_id + '/videos'
+        video_url = 'https://api.themoviedb.org/3/movie/' + str(data['id']) + '/videos'
         video_r = requests.get(video_url, params=video_payload)
         video_rdata = video_r.json()['results']
         if video_rdata:
             if str(type(video_rdata)) == "<class 'list'>":
                 video_rdata = video_rdata[0]
             movie.video_key = video_rdata['key']
+
+
+
 
 
         # People 가져오기
@@ -329,6 +331,22 @@ def get_movie(page):
         
         movie.save()
 
+
+
+
+        # Backdrop 이미지 가져오기
+        b_payload = {
+        'api_key': API_KEY,
+        }
+        b_url = 'https://api.themoviedb.org/3/movie/' + str(data['id']) + '/images'
+        b_r = requests.get(b_url, params=b_payload)
+        b_rdata = b_r.json()['backdrops']
+        for i in range(min(5, len(b_rdata))):
+            img = Backdrop()
+            img.path = b_rdata[i]['file_path']
+            img.movie = movie
+            img.save()
+            
         # 출연진 설정
         casts = p_data['cast']
 
@@ -396,6 +414,6 @@ def get_movie(page):
 
 # DB : 영화 목록 가져오기
 def get_movies(request):
-    for p in range(1, 101): # 100까지 완료
+    for p in range(41, 61): # 60까지 시도
         get_movie(p)
     return JsonResponse({"data" : "success!"}) 
