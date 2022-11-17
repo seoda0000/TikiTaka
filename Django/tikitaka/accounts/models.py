@@ -9,12 +9,12 @@ from .managers import CustomUserManager
 class User(AbstractUser):
     username = None
     email = models.EmailField(('email address'), unique=True)
-    nickname = models.CharField(max_length=100, null=True, default=None)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
+    profile_img = models.ImageField(null=True)
 
     
 
