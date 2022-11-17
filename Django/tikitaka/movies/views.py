@@ -55,14 +55,14 @@ def top_rated_movie(request):
 def search_movie(request):
     search_input = request.GET.get('search','')
     genre_input = request.GET.getlist('genres[]')
-    movies = Movie.objects.order_by('-popularity')
+    movies = Movie.objects.all()
     if search_input:
         movies = movies.filter(
             Q(title__contains=search_input) |
             Q(original_title__icontains=search_input)
         ).filter(
             genres__in=genre_input
-        ).distinct()
+        ).order_by('-popularity').distinct()[:30]
     serializer = PosterListSerializer(movies, many=True)
     return Response(serializer.data)
 
