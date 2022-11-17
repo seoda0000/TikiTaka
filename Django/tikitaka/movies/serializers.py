@@ -38,10 +38,15 @@ class PosterListSerializer(serializers.ModelSerializer):
 #         fields = '__all__'
 #         read_only_fields = ('movies',)
 
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = '__all__'
+
 
 class WatchProviderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = People
+        model = WatchProvider
         fields = '__all__'
 
 
@@ -55,6 +60,8 @@ class PeopleShortSerializer(serializers.ModelSerializer):
 class MovieDetailSerializer(serializers.ModelSerializer):
     director = PeopleShortSerializer(read_only=True)
     casts = PeopleShortSerializer(many=True, read_only=True)
+    watch_providers = WatchProviderSerializer(many=True, read_only=True)
+    genres = GenreSerializer(many=True, read_only=True)
     class Meta:
         model = Movie
         fields = '__all__'

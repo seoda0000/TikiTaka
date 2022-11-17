@@ -32,7 +32,7 @@ class People(models.Model):
 class Movie(models.Model):
     # 기본 항목
     adult = models.BooleanField(null=True)
-    backdrop_path = models.CharField(max_length=100, null=True)
+    video_key = models.CharField(max_length=200, null=True)
     genres = models.ManyToManyField(Genre, related_name="movies")
     id = models.IntegerField(unique=True, primary_key=True)
     original_title = models.CharField(max_length=100, null=True)

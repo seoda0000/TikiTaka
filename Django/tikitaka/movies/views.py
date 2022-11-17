@@ -265,7 +265,6 @@ def get_movie(page):
             continue
         movie = Movie(id=data['id'])
         movie.adult = data.get('adult')
-        movie.backdrop_path = data.get('backdrop_path')
         movie.original_title = data.get('original_title')
         movie.overview = data.get('overview')
         movie.popularity = data.get('popularity')
@@ -287,6 +286,20 @@ def get_movie(page):
         d_data = d_r.json()
         movie.runtime = d_data['runtime']
         movie.status = d_data['status']
+
+
+        # 예고편 가져오기
+        video_payload = {
+            'api_key': API_KEY,
+            'language': 'ko-KR',
+        }
+        video_url = 'https://api.themoviedb.org/3/movie/' + movie_id + '/videos'
+        video_r = requests.get(video_url, params=video_payload)
+        video_rdata = video_r.json()['results']
+        if video_rdata:
+            if str(type(video_rdata)) == "<class 'list'>":
+                video_rdata = video_rdata[0]
+            movie.video_key = video_rdata['key']
 
 
         # People 가져오기
