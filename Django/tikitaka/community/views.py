@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Review, Comment, Vote
 from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer
 from movies.models import Movie, Backdrop
+from movies.serializers import BackdropSerializer
 # from .forms import ReviewForm, CommentForm
 from django.http import JsonResponse
 from rest_framework.response import Response
@@ -11,33 +12,6 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
 from rest_framework import status
 from django.core import serializers
-
-
-# Create your views here.
-
-# def index(request):
-#     reviews = Review.objects.all()
-#     context = {
-#         'reviews':reviews
-#     }
-#     return render(request, 'community/index.html', context)
-
-
-
-        
-#     else:
-#         return redirect('accounts:login')
-
-# def detail(request, review_pk):
-#     review = Review.objects.get(pk=review_pk)
-#     comments = review.comment_set.all()
-#     comment_form = CommentForm()
-#     context = {
-#         'review': review,
-#         'comments':comments,
-#         'comment_form': comment_form,
-#     }
-#     return render(request, 'community/detail.html', context)
 
 
 
@@ -59,7 +33,17 @@ from django.core import serializers
 #     return redirect('accounts:login')
 
 
+
+
+
 # ================= CREATE ================= #
+@api_view(['GET'])
+def get_backdrop(request):
+    movie_id = request.GET.get('id','')
+    backdrops = Backdrop.objects.filter(movie_id=int(movie_id))
+    serializer = BackdropSerializer(backdrops, many=True)
+    return Response(serializer.data)
+
 
 @api_view(['POST'])
 def create_vote(request, movie_pk):

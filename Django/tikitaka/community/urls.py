@@ -11,4 +11,5 @@ urlpatterns = [
     path('review/<int:review_pk>/', views.review_detail),
     path('comment/<int:comment_pk>/', views.comment_detail),
     path('vote/<int:vote_pk>/', views.vote_detail),
+    path('get_backdrop/', views.get_backdrop),
 ]
