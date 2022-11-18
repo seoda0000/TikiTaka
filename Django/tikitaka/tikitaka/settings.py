@@ -35,7 +35,11 @@ SECRET_KEY = 'django-insecure-n(gq=@3yiypuz_$@^62amc*)d2xm0p3ir4^yunk@(iqq%^r%_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '3.228.21.204',
+]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Application definition
