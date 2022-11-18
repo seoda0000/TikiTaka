@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.shortcuts import render, redirect
 from .models import Review, Comment, Vote
-from .serializers import ReviewSerializer, ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer
+from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer
 from movies.models import Movie, Backdrop
 # from .forms import ReviewForm, CommentForm
 from django.http import JsonResponse
@@ -59,6 +59,7 @@ from django.core import serializers
 #     return redirect('accounts:login')
 
 
+# ================= CREATE ================= #
 
 @api_view(['POST'])
 def create_vote(request, movie_pk):
@@ -88,5 +89,50 @@ def create_comment(request, review_pk):
         return Response(comment.data, status=status.HTTP_201_CREATED)
 
 
+# ================= READ UPDATE DELETE ================= #
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def review_detail(request, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if request.method == 'GET':
+        serializer = ReviewSerializer(review)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = ReviewSerializer(review, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+    elif request.method == 'DELETE':
+        review.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+@api_view(['PUT', 'DELETE'])
+def vote_detail(request, vote_pk):
+    vote = Vote.objects.get(pk=vote_pk)
+    if request.method == 'PUT':
+        serializer = VoteSerializer(vote, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+    elif request.method == 'DELETE':
+        vote.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+@api_view(['PUT', 'DELETE'])
+def comment_detail(request, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.method == 'PUT':
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+    elif request.method == 'DELETE':
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 

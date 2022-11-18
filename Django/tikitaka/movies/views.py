@@ -85,6 +85,8 @@ def search_movie_people(request):
         serializer = PeopleSerializer(people, many=True)
     return Response(serializer.data)
 
+    
+
 
 # 영화 디테일 조회
 @api_view(['GET'])

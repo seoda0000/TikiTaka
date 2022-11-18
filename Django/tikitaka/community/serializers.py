@@ -10,6 +10,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     movie = MovieNameSerializer(read_only=True)
     backdrop = BackdropSerializer(read_only=True)
     user = UserShortSerializer(read_only=True)
+    like_user = UserShortSerializer(read_only=True)
 
     class Meta:
         model = Review
@@ -23,7 +24,15 @@ class ReviewCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = '__all__'
-        read_only_fields = ('movie',)
+        read_only_fields = ('movie', 'like_users',)
+
+
+class CommentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        read_only_fields = ('review', 'user')
 
 
 class CommentCreateSerializer(serializers.ModelSerializer):
@@ -34,6 +43,15 @@ class CommentCreateSerializer(serializers.ModelSerializer):
         model = Comment
         fields = '__all__'
         read_only_fields = ('review',)
+
+
+class VoteSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = Vote
+        fields = '__all__'
+        read_only_fields = ('movie', 'user')
 
 
 class VoteCreateSerializer(serializers.ModelSerializer):
