@@ -14,7 +14,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
-    profile_img = models.ImageField(null=True)
+    profile_img = models.ImageField(upload_to="%Y/%m/%d", null=True, blank=True)
 
     
 

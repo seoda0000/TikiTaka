@@ -12,8 +12,56 @@ import requests
 from rest_framework import status
 from json.decoder import JSONDecodeError
 
+
+
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import authentication_classes
+from rest_framework.decorators import permission_classes
+from accounts.models import User
+from .serializers import UserShortSerializer
+from django.db.models import Q
+
+
+
 KAKAO_CALLBACK_URI = getattr(settings, 'KAKAO_CALLBACK_URI')
 BASE_URL = 'http://localhost:8000/'
+
+
+# 유저 검색
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def search_user(request):
+    search_input = request.GET.get('search','')
+    if search_input:
+        users = User.objects.filter(
+            Q(first_name__icontains=search_input) |
+            Q(email__icontains=search_input)
+        ).distinct()[:30]
+        serializer = UserShortSerializer(users, many=True)
+        return Response(serializer.data)
+    else:
+        return Response([])
+
+
+
+
+
+
+
+
+
+
+# ============================================================= #
+#                        카카오 로그인                          #
+# ============================================================= #
+
+
+
+
 
 def kakao_login(request):
     rest_api_key = getattr(settings, 'KAKAO_REST_API_KEY')

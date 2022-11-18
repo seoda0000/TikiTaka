@@ -41,6 +41,9 @@ ALLOWED_HOSTS = [
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# 이미지 업로드
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Application definition
 
