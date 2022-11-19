@@ -21,13 +21,27 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import authentication_classes
 from rest_framework.decorators import permission_classes
 from accounts.models import User
-from .serializers import UserShortSerializer
+from .serializers import UserShortSerializer, UserNameSerializer
 from django.db.models import Q
 
 
 
 KAKAO_CALLBACK_URI = getattr(settings, 'KAKAO_CALLBACK_URI')
 BASE_URL = 'http://localhost:8000/'
+
+
+# 전체 유저 목록
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def all_user_list(request):
+    users = User.objects.all()
+    serializer = UserNameSerializer(users, many=True)
+    lst = set()
+    for s in serializer.data:
+        lst.add(s['first_name'])
+        lst.add(s['email'])
+    return Response(list(lst))
 
 
 # 유저 검색

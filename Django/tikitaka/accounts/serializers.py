@@ -9,3 +9,7 @@ class UserShortSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'first_name', 'profile_img', 'email',)
 
+class UserNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('first_name', 'email',)
