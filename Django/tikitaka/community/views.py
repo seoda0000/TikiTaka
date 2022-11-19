@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Review, Comment, Vote
 from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer
 from movies.models import Movie, Backdrop
-from movies.serializers import BackdropSerializer
+from movies.serializers import BackdropSerializer, MovieNameSerializer
 # from .forms import ReviewForm, CommentForm
 from django.http import JsonResponse
 from rest_framework.response import Response
@@ -39,6 +39,21 @@ from rest_framework.decorators import permission_classes
 
 
 # ================= CREATE ================= #
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def all_movie_list(request):
+    movies = Movie.objects.all()
+    serializer = MovieNameSerializer(movies, many=True)
+    lst = []
+    for s in serializer.data:
+        lst.append(s['title'])
+        lst.append(s['original_title'])
+    return Response(lst)
+
+
+
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
