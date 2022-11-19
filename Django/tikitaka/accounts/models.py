@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import CustomUserManager
+from movies.models import Movie
 
 
 # Create your models here.
@@ -15,6 +16,7 @@ class User(AbstractUser):
 
     objects = CustomUserManager()
     profile_img = models.ImageField(upload_to="%Y/%m/%d", null=True, blank=True)
+    bookmarks = models.ManyToManyField(Movie, related_name="bookmark_users")
 
     
 
