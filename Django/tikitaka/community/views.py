@@ -48,8 +48,8 @@ def all_movie_list(request):
     serializer = MovieNameSerializer(movies, many=True)
     lst = []
     for s in serializer.data:
-        lst.append(s['title'])
-        lst.append(s['original_title'])
+        lst.append((s['id'], s['title']))
+        lst.append((s['id'], s['original_title']))
     return Response(lst)
 
 
