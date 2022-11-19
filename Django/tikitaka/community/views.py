@@ -52,10 +52,11 @@ def all_movie_list(request):
             'id': s['id'],
             'title': s['title']
         })
-        lst.append({
-            'id': s['id'],
-            'title': s['original_title']
-        })
+        if s['title'] != s['original_title']:
+            lst.append({
+                'id': s['id'],
+                'title': s['original_title']
+            })
     return Response(lst)
 
 
