@@ -20,7 +20,7 @@ class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.PROTECT)
     backdrop = models.ForeignKey(Backdrop, on_delete=models.PROTECT)
     content = models.TextField()
-    viewing_date = models.DateField(null=True)
+    # viewing_date = models.DateField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     # is_public = models.BooleanField
