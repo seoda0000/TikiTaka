@@ -7,7 +7,7 @@ class BackdropSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Backdrop
-        fields = ('path',)
+        fields = ('id', 'path',)
 
 
 class PosterListSerializer(serializers.ModelSerializer):
