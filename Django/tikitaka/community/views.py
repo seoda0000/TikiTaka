@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
 from rest_framework import status
 from django.core import serializers
+from rest_framework.decorators import authentication_classes
+from rest_framework.decorators import permission_classes
 
 
 
@@ -38,6 +40,8 @@ from django.core import serializers
 
 # ================= CREATE ================= #
 @api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
 def get_backdrop(request):
     movie_id = request.GET.get('id','')
     backdrops = Backdrop.objects.filter(movie_id=int(movie_id))
@@ -46,6 +50,8 @@ def get_backdrop(request):
 
 
 @api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
 def create_vote(request, movie_pk):
     movie = Movie.objects.get(pk=movie_pk)
     vote = VoteCreateSerializer(data=request.data)
@@ -55,6 +61,8 @@ def create_vote(request, movie_pk):
 
 
 @api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
 def create_review(request, movie_pk):
     movie = Movie.objects.get(pk=movie_pk)
     review = ReviewCreateSerializer(data=request.data)
@@ -65,6 +73,8 @@ def create_review(request, movie_pk):
 
 
 @api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
 def create_comment(request, review_pk):
     review = Review.objects.get(pk=review_pk)
     comment = CommentCreateSerializer(data=request.data)
@@ -77,6 +87,8 @@ def create_comment(request, review_pk):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@authentication_classes([])
+@permission_classes([])
 def review_detail(request, review_pk):
     review = Review.objects.get(pk=review_pk)
     if request.method == 'GET':
@@ -94,6 +106,8 @@ def review_detail(request, review_pk):
 
 
 @api_view(['PUT', 'DELETE'])
+@authentication_classes([])
+@permission_classes([])
 def vote_detail(request, vote_pk):
     vote = Vote.objects.get(pk=vote_pk)
     if request.method == 'PUT':
@@ -108,6 +122,8 @@ def vote_detail(request, vote_pk):
 
 
 @api_view(['PUT', 'DELETE'])
+@authentication_classes([])
+@permission_classes([])
 def comment_detail(request, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if request.method == 'PUT':
