@@ -17,6 +17,15 @@ class UserNameSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     bookmarks = PosterSerializer(many=True, read_only=True)
+
     class Meta:
         model = User
         exclude = ('password', 'last_name', 'is_superuser', 'is_staff', 'is_active', 'groups', 'user_permissions',)
+
+
+class BookmarkSerializer(serializers.ModelSerializer):
+    bookmarks = PosterSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('bookmarks',)

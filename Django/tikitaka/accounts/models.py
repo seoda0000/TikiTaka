@@ -8,7 +8,7 @@ from movies.models import Movie
 
 # Create your models here.
 class User(AbstractUser):
-    username = None
+    username = models.CharField(max_length=150, blank=True, null=True, unique=True)
     email = models.EmailField(('email address'), unique=True)
 
     USERNAME_FIELD = 'email'
@@ -21,7 +21,11 @@ class User(AbstractUser):
     
 
     def __str__(self):
-        return self.email
+        return self.username
+    
+    def clean(self):
+        if self.username == "":
+            self.username = None 
 
 
 

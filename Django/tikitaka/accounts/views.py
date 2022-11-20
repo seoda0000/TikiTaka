@@ -21,7 +21,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import authentication_classes
 from rest_framework.decorators import permission_classes
 from accounts.models import User
-from .serializers import UserShortSerializer, UserNameSerializer, UserSerializer
+from .serializers import UserShortSerializer, UserNameSerializer, UserSerializer, BookmarkSerializer
 from django.db.models import Q
 
 
@@ -65,8 +65,29 @@ def search_user(request):
 @permission_classes([])
 def get_user(request):
     name = request.GET.get('name','')
-    users = User.objects.get(first_name=name)
+    users = User.objects.get(username=name)
     serializer = UserSerializer(users)
+    return Response(serializer.data)
+
+
+# pk로 유저 반환
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def pk_user(request, user_id):
+    user = User.objects.get(pk=user_id)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+
+
+
+# 유저 북마크 반환
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def bookmark_list(request, user_id):
+    user = User.objects.get(pk=user_id)
+    serializer = BookmarkSerializer(user)
     return Response(serializer.data)
 
 
