@@ -38,6 +38,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '35.174.62.42',
     '127.0.0.1',
+    'localhost',
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'

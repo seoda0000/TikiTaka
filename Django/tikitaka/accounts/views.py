@@ -105,6 +105,7 @@ def kakao_callback(request):
     profile_json = profile_request.json()
     kakao_account = profile_json.get('kakao_account')
     email = kakao_account.get('email')
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', email)
 
     # Signup or Signin Request
 
@@ -115,9 +116,9 @@ def kakao_callback(request):
         social_user = SocialAccount.objects.get(user=user)
         if social_user is None:
             return JsonResponse({'err_msg': 'email exists but not social user'}, status=status.HTTP_400_BAD_REQUEST)
+        # 기존에 Google로 가입된 유저
         if social_user.provider != 'kakao':
             return JsonResponse({'err_msg': 'no matching social type'}, status=status.HTTP_400_BAD_REQUEST)
-        # 기존에 Google로 가입된 유저
         data = {'access_token': access_token, 'code': code}
         accept = requests.post(
             f"{BASE_URL}accounts/kakao/login/finish/", data=data)
@@ -131,6 +132,7 @@ def kakao_callback(request):
     # 기존에 가입된 유저가 없으면 새로 가입
     except User.DoesNotExist:
         data = {'access_token': access_token, 'code': code}
+        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', data)
         accept = requests.post(
             f"{BASE_URL}accounts/kakao/login/finish/", data=data)
         accept_status = accept.status_code
