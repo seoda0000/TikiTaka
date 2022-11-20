@@ -40,7 +40,6 @@ def all_user_list(request):
     lst = set()
     for s in serializer.data:
         lst.add(s['first_name'])
-        lst.add(s['email'])
     return Response(list(lst))
 
 
