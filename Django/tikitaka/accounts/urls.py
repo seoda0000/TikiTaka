@@ -3,8 +3,9 @@ from . import views
 
 app_name = "accounts"
 urlpatterns = [
-    path('search_user/', views.search_user),
     path('all_user_list/', views.all_user_list),
+    path('search_user/', views.search_user),
+    path('get_user/', views.get_user),
 
 
     # 카카오 로그인

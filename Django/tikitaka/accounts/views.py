@@ -21,7 +21,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import authentication_classes
 from rest_framework.decorators import permission_classes
 from accounts.models import User
-from .serializers import UserShortSerializer, UserNameSerializer
+from .serializers import UserShortSerializer, UserNameSerializer, UserSerializer
 from django.db.models import Q
 
 
@@ -51,13 +51,23 @@ def search_user(request):
     search_input = request.GET.get('search','')
     if search_input:
         users = User.objects.filter(
-            Q(first_name__icontains=search_input) |
-            Q(email__icontains=search_input)
+            first_name__icontains=search_input
         ).distinct()[:30]
         serializer = UserShortSerializer(users, many=True)
         return Response(serializer.data)
     else:
         return Response([])
+
+
+# 닉네임으로 유저 반환
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def get_user(request):
+    name = request.GET.get('name','')
+    users = User.objects.get(first_name=name)
+    serializer = UserSerializer(users)
+    return Response(serializer.data)
 
 
 

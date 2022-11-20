@@ -18,6 +18,13 @@ class PosterListSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'original_title', 'poster_path', 'backdrop_set',)
 
 
+class PosterSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Movie
+        fields = ('id', 'title', 'original_title', 'poster_path',)
+
+
 class MovieNameSerializer(serializers.ModelSerializer):
 
     class Meta:
