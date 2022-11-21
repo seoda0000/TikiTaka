@@ -8,12 +8,12 @@ from movies.serializers import PosterSerializer
 class UserShortSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'profile_img', 'email',)
+        fields = ('id', 'username', 'profile_img', 'email',)
 
 class UserNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('first_name', 'email',)
+        fields = ('username', 'email',)
 
 class UserSerializer(serializers.ModelSerializer):
     bookmarks = PosterSerializer(many=True, read_only=True)

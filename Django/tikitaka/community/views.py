@@ -14,6 +14,7 @@ from rest_framework import status
 from django.core import serializers
 from rest_framework.decorators import authentication_classes
 from rest_framework.decorators import permission_classes
+from accounts.models import User
 
 
 
@@ -106,6 +107,17 @@ def create_comment(request, review_pk):
 
 
 # ================= READ UPDATE DELETE ================= #
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def review_list(request, username):
+    user = User.objects.get(username=username)
+    reviews = Review.objects.filter(user=user)
+    serializer = ReviewSerializer(reviews, many=True)
+    return Response(serializer.data)
+
+
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
