@@ -157,7 +157,7 @@ def kakao_callback(request):
         if accept_status != 200:
             return JsonResponse({'err_msg': 'failed to signin'}, status=accept_status)
         accept_json = accept.json()
-        accept_json.pop('user', None)
+        # accept_json.pop('user', None)
         return JsonResponse(accept_json)
         
     # 기존에 가입된 유저가 없으면 새로 가입
@@ -171,7 +171,7 @@ def kakao_callback(request):
             return JsonResponse({'err_msg': 'failed to signup'}, status=accept_status)
         # user의 pk, email, first name, last name과 Access Token, Refresh token 가져옴
         accept_json = accept.json()
-        accept_json.pop('user', None)
+        # accept_json.pop('user', None)
         return JsonResponse(accept_json)
 
 

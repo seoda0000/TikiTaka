@@ -42,7 +42,7 @@ def popular_movie(request):
 @permission_classes([])
 def top_rated_movie(request):
     if request.method == 'GET':
-        movies = Movie.objects.order_by('-vote_average')
+        movies = Movie.objects.order_by('-vote_count')[:40]
         serializer = PosterListSerializer(movies, many=True)
         return Response(serializer.data)
 

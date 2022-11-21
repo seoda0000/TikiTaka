@@ -3,6 +3,7 @@ from .models import Review, Vote, Comment
 from movies.models import Movie, Backdrop
 from movies.serializers import BackdropSerializer, MovieNameSerializer
 from accounts.serializers import UserShortSerializer
+from accounts.models import User
 
 
 
@@ -62,3 +63,12 @@ class VoteCreateSerializer(serializers.ModelSerializer):
         model = Vote
         fields = '__all__'
         read_only_fields = ('movie',)
+
+class LikeReviewSerializer(serializers.ModelSerializer):
+    like_reviews = ReviewSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('like_reviews',)
+
+

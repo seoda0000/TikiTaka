@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.shortcuts import render, redirect
 from .models import Review, Comment, Vote
-from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer
+from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer, LikeReviewSerializer
 from movies.models import Movie, Backdrop
 from movies.serializers import BackdropSerializer, MovieNameSerializer
 # from .forms import ReviewForm, CommentForm
@@ -18,7 +18,8 @@ from accounts.models import User
 
 
 
-# @login_required
+
+
 # def like(request, review_pk):
 #     if request.user.is_authenticated:
 #         review = Review.objects.get(pk=review_pk)
@@ -34,6 +35,7 @@ from accounts.models import User
 #         }
 #         return JsonResponse(context)
 #     return redirect('accounts:login')
+
 
 
 
@@ -170,3 +172,33 @@ def comment_detail(request, comment_pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+
+# =============== 좋아요 ===================
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def like(request, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    user = User.objects.get(pk=request.data['id'])
+    if review.like_users.filter(id=user.id).exists():
+        review.like_users.remove(user)
+        is_liked = False
+    else:
+        review.like_users.add(user)
+        is_liked = True
+    context = {
+        'is_liked' : is_liked,
+        'like_count' : review.like_users.count()
+    }
+    return JsonResponse(context)
+# return redirect('accounts:login')
+
+
+# 유저 좋아요한 리뷰 목록 반환
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def like_list(request, username):
+    user = User.objects.get(username=username)
+    serializer = LikeReviewSerializer(user)
+    return Response(serializer.data)

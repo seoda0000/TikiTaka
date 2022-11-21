@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import User
 from movies.serializers import PosterSerializer
+# from community.serializers import ReviewSerializer
 
 
 
@@ -29,3 +30,5 @@ class BookmarkSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('bookmarks',)
+
+
