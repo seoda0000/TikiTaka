@@ -93,6 +93,44 @@ def bookmark_list(request, user_id):
 
 
 
+# @api_view(['POST'])
+# @authentication_classes([])
+# @permission_classes([])
+# def follow(request, user_pk):
+#     if request.user.is_authenticated:
+#         User = get_user_model()
+#         me = request.user
+#         you = User.objects.get(pk=user_pk)
+#         if me != you:
+#             # 내가(request.user) 그 사람의 팔로워 목록에 있다면
+#             # if me in you.followers.all():
+#             if you.followers.filter(pk=me.pk).exists():
+#                 # 언팔로우
+#                 you.followers.remove(me)
+#             else:
+#                 # 팔로우
+#                 you.followers.add(me)
+#         return redirect('accounts:profile', you.username)
+#     return redirect('accounts:login')
+
+
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def follow(request, user_id):
+    me = User.objects.get(pk=request.data['id'])
+    you = User.objects.get(pk=user_id)
+    if me != you:
+        if you.follower.filter(pk=me.id).exists():
+            you.follower.remove(me)
+            is_followed = False
+        else:
+            you.follower.add(me)
+            is_followed = True
+    context = {
+        'is_followed' : is_followed,
+    }
+    return JsonResponse(context)
 
 
 
