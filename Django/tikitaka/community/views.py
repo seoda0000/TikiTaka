@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.shortcuts import render, redirect
-from .models import Review, Comment, Vote
+from .models import Review, Comment, Vote, Calendar
 from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer, LikeReviewSerializer, FeedSerializer, UserReviewSerializer, CalendarCreateSerializer, CalendarSerializer, UserCalendarSerializer
 from movies.models import Movie, Backdrop
 from movies.serializers import BackdropSerializer, MovieNameSerializer
@@ -189,6 +189,19 @@ def comment_detail(request, comment_pk):
     elif request.method == 'DELETE':
         comment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def delete_calendar(request):
+    calendar = Calendar.objects.get(id=request.data.get('calendar'))
+    calendar.delete()
+    user = User.objects.get(id=request.data.get('user'))
+    calendars = UserCalendarSerializer(user)
+    data = calendars.data.get('calendar_set')
+    return Response(data, status=status.HTTP_201_CREATED)
 
 
 

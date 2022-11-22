@@ -18,4 +18,5 @@ urlpatterns = [
     path('all_movie_list/', views.all_movie_list),
     path('feed/<int:user_id>/', views.feed),
     path('calendar/create/', views.create_calendar),
+    path('calendar/delete/', views.delete_calendar),
 ]
