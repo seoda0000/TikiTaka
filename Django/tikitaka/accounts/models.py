@@ -15,7 +15,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
-    profile_img = models.ImageField(upload_to="%Y/%m/%d", null=True, blank=True)
+    profile_img = models.CharField(max_length=150, blank=True, null=True, default='hotdog')
     bookmarks = models.ManyToManyField(Movie, related_name="bookmark_users", blank=True)
     favorite_genres = models.ManyToManyField(Genre, related_name="favorite_users", blank=True)
     description = models.TextField(null=True, blank=True)

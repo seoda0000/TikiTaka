@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 ]
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8080']
