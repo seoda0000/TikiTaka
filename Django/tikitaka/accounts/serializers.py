@@ -32,3 +32,8 @@ class BookmarkSerializer(serializers.ModelSerializer):
         fields = ('bookmarks',)
 
 
+
+
+
+
+

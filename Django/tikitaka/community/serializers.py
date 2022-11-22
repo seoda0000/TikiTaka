@@ -72,3 +72,16 @@ class LikeReviewSerializer(serializers.ModelSerializer):
         fields = ('like_reviews',)
 
 
+
+class UserReviewSerializer(serializers.ModelSerializer):
+    reviews = ReviewSerializer(many=True, read_only=True)
+    class Meta:
+        model = User
+        fields = ('reviews',)
+
+class FeedSerializer(serializers.ModelSerializer):
+    following = UserReviewSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('following',)

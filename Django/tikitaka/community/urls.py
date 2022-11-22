@@ -16,4 +16,5 @@ urlpatterns = [
     path('vote/<int:vote_pk>/', views.vote_detail),
     path('get_backdrop/', views.get_backdrop),
     path('all_movie_list/', views.all_movie_list),
+    path('feed/', views.feed),
 ]
