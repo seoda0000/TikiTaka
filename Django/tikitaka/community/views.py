@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.shortcuts import render, redirect
 from .models import Review, Comment, Vote
-from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer, LikeReviewSerializer, FeedSerializer, UserReviewSerializer
+from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer, LikeReviewSerializer, FeedSerializer, UserReviewSerializer, CalendarCreateSerializer, CalendarSerializer, UserCalendarSerializer
 from movies.models import Movie, Backdrop
 from movies.serializers import BackdropSerializer, MovieNameSerializer
 # from .forms import ReviewForm, CommentForm
@@ -111,6 +111,19 @@ def create_comment(request, review_pk):
     if comment.is_valid(raise_exception=True):
         comment.save(review=review)
         return Response(comment.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def create_calendar(request):
+    calendar = CalendarCreateSerializer(data=request.data)
+    if calendar.is_valid(raise_exception=True):
+        calendar.save()
+    user = User.objects.get(id=request.data.get('user'))
+    calendars = UserCalendarSerializer(user)
+    data = calendars.data.get('calendar_set')
+    return Response(data, status=status.HTTP_201_CREATED)
 
 
 # ================= READ UPDATE DELETE ================= #

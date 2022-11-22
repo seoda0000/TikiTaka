@@ -17,4 +17,5 @@ urlpatterns = [
     path('get_backdrop/', views.get_backdrop),
     path('all_movie_list/', views.all_movie_list),
     path('feed/<int:user_id>/', views.feed),
+    path('calendar/create/', views.create_calendar),
 ]
