@@ -15,6 +15,7 @@ from django.core import serializers
 from rest_framework.decorators import authentication_classes
 from rest_framework.decorators import permission_classes
 from accounts.models import User
+from django.db.models import Q
 
 
 
@@ -196,9 +197,11 @@ def comment_detail(request, comment_pk):
 @authentication_classes([])
 @permission_classes([])
 def delete_calendar(request):
-    calendar = Calendar.objects.get(id=request.data.get('calendar'))
-    calendar.delete()
     user = User.objects.get(id=request.data.get('user'))
+    calendar = Calendar.objects.all().filter(
+        Q(start=request.data.get('start')) &  Q(user=user)
+        )
+    calendar[0].delete()
     calendars = UserCalendarSerializer(user)
     data = calendars.data.get('calendar_set')
     return Response(data, status=status.HTTP_201_CREATED)
