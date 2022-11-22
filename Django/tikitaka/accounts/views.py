@@ -113,7 +113,7 @@ def bookmark_list(request, user_id):
 #         return redirect('accounts:profile', you.username)
 #     return redirect('accounts:login')
 
-
+# 팔로우
 @api_view(['POST'])
 @authentication_classes([])
 @permission_classes([])

@@ -69,9 +69,14 @@ def all_movie_list(request):
 @permission_classes([])
 def get_backdrop(request):
     movie_id = request.GET.get('id','')
+    movie = Movie.objects.get(id=movie_id)
     backdrops = Backdrop.objects.filter(movie_id=int(movie_id))
     serializer = BackdropSerializer(backdrops, many=True)
-    return Response(serializer.data)
+    data = dict()
+    data['backdrops'] = serializer.data
+    
+    data['title'] = movie.title
+    return Response(data)
 
 
 @api_view(['POST'])
@@ -203,3 +208,6 @@ def like_list(request, username):
     user = User.objects.get(username=username)
     serializer = LikeReviewSerializer(user)
     return Response(serializer.data)
+
+
+# =========== 피드 출력 ==============
