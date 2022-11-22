@@ -136,8 +136,9 @@ def review_detail(request, review_pk):
             serializer.save()
             return Response(serializer.data)
     elif request.method == 'DELETE':
+        username = review.user.username
         review.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(username)
 
 
 
