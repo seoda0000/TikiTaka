@@ -185,8 +185,7 @@ def comment_detail(request, comment_pk):
 @permission_classes([])
 def like(request, review_pk):
     review = Review.objects.get(pk=review_pk)
-    user_id = request.GET.get('id','')
-    user = User.objects.get(pk=user_id)
+    user = User.objects.get(pk=request.data['id'])
     if review.like_users.filter(id=user.id).exists():
         review.like_users.remove(user)
         is_liked = False
