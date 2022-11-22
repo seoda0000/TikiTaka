@@ -215,8 +215,7 @@ def like_list(request, username):
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
-def feed(request):
-    user_id = request.GET.get('id','')
+def feed(request, user_id):
     user = User.objects.get(pk=user_id)
     review_me = UserReviewSerializer(user).data['reviews']
     review_following = FeedSerializer(user).data['following'][0]['reviews']
