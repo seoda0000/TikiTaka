@@ -218,7 +218,7 @@ def like_list(request, username):
 def feed(request, user_id):
     user = User.objects.get(pk=user_id)
     review_me = UserReviewSerializer(user).data['reviews']
-    if FeedSerializer(user).data['following']:
+    if FeedSerializer(user).data.get('following'):
         review_following = FeedSerializer(user).data['following'][0]['reviews']
         feed = review_me + review_following
         feed.sort(key=lambda x:x['created_at'])
