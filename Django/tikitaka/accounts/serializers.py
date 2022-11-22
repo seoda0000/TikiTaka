@@ -20,6 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
     bookmarks = PosterSerializer(many=True, read_only=True)
     follower_count = serializers.IntegerField(source='follower.count', read_only=True)
     review_count = serializers.IntegerField(source='reviews.count', read_only=True)
+    following = UserShortSerializer(many=True, read_only=True)
 
     class Meta:
         model = User
