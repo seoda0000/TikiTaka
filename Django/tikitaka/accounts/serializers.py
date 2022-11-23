@@ -9,7 +9,7 @@ from movies.serializers import PosterSerializer
 class UserShortSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'profile_img', 'email',)
+        fields = ('id', 'username', 'profile_img',)
 
 class UserNameSerializer(serializers.ModelSerializer):
     class Meta:

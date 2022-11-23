@@ -19,6 +19,7 @@ class ReviewCreateSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    user = UserShortSerializer(read_only=True)
 
     class Meta:
         model = Comment
