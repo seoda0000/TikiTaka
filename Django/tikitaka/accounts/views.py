@@ -98,8 +98,9 @@ def bookmark_list(request, user_id):
 def edit_profile(request):
     user = User.objects.get(id=request.data.get('id'))
     user.profile_img = request.data.get('profile_img')
-    serializer = BookmarkSerializer(user)
-    return Response(serializer.data)
+    user.description = request.data.get('description')
+    user.save()
+    return Response(status=status.HTTP_200_OK)
 
 
 

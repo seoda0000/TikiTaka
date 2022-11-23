@@ -10,6 +10,7 @@ urlpatterns = [
     path('<int:user_id>/bookmarks/', views.bookmark_list),
     path('<int:user_id>/user/', views.pk_user),
     path('<int:user_id>/follow/', views.follow),
+    path('edit_profile/', views.edit_profile),
 
 
     # 카카오 로그인
