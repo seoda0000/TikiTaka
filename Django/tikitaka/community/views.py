@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.shortcuts import render, redirect
 from .models import Review, Comment, Vote, Calendar
-from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer, LikeReviewSerializer, FeedSerializer, UserReviewSerializer, CalendarCreateSerializer, CalendarSerializer, UserCalendarSerializer
+from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer, LikeReviewSerializer, FeedSerializer, UserReviewSerializer, CalendarCreateSerializer, CalendarSerializer, UserCalendarSerializer, ReviewSerializerForLike
 from movies.models import Movie, Backdrop
 from movies.serializers import BackdropSerializer, MovieNameSerializer
 # from .forms import ReviewForm, CommentForm
@@ -136,7 +136,7 @@ def create_calendar(request):
 def review_list(request, username):
     user = User.objects.get(username=username)
     reviews = Review.objects.filter(user=user)
-    serializer = ReviewSerializer(reviews, many=True)
+    serializer = ReviewSerializerForLike(reviews, many=True)
     return Response(serializer.data)
 
 

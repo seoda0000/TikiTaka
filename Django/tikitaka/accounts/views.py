@@ -101,6 +101,13 @@ def edit_profile(request):
     user = User.objects.get(id=request.data.get('id'))
     user.profile_img = request.data.get('profile_img')
     user.description = request.data.get('description')
+    genre_id_list = request.data.get('genre_id_list')
+    user.favorite_genres.all().delete()
+    print('@@@@@@@@@@@@@@@@@@@@', genre_id_list)
+    # genre.favorite_users.filter(user=user).delete()
+    for g in genre_id_list:
+        genre = Genre.objects.get(pk=g)
+        genre.favorite_users.add(user)
     user.save()
     return Response(status=status.HTTP_200_OK)
 

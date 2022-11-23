@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Review, Vote, Comment, Calendar
 from movies.models import Movie, Backdrop
 from movies.serializers import BackdropSerializer, MovieNameSerializer
-from accounts.serializers import UserShortSerializer
+from accounts.serializers import UserShortSerializer, UserIdSerializer
 from accounts.models import User
 
 
@@ -31,6 +31,18 @@ class ReviewSerializer(serializers.ModelSerializer):
     backdrop = BackdropSerializer(read_only=True)
     user = UserShortSerializer(read_only=True)
     like_users = UserShortSerializer(many=True, read_only=True)
+    comment_set = CommentSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Review
+        fields = '__all__'
+
+
+class ReviewSerializerForLike(serializers.ModelSerializer):
+    movie = MovieNameSerializer(read_only=True)
+    backdrop = BackdropSerializer(read_only=True)
+    user = UserShortSerializer(read_only=True)
+    like_users = UserIdSerializer(many=True, read_only=True)
     comment_set = CommentSerializer(many=True, read_only=True)
 
     class Meta:

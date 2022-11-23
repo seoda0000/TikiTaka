@@ -4,6 +4,11 @@ from movies.serializers import PosterSerializer
 # from community.serializers import ReviewSerializer
 
 
+class UserIdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id')
+
 
 
 class UserShortSerializer(serializers.ModelSerializer):
