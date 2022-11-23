@@ -11,8 +11,10 @@ from django.http import JsonResponse
 import requests
 from rest_framework import status
 from json.decoder import JSONDecodeError
-from movies.models import Genre
-
+from movies.models import Genre, Movie
+from movies.serializers import MovieNameSerializer, PosterSerializer
+from community.models import Review
+from community.serializers import UserReviewSerializer
 
 
 from rest_framework.response import Response
@@ -91,6 +93,67 @@ def bookmark_list(request, user_id):
     user = User.objects.get(pk=user_id)
     serializer = BookmarkSerializer(user)
     return Response(serializer.data)
+
+
+
+
+
+
+
+
+
+# 북마크 기반 영화 추천
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def recommend_bookmark(request, user_id):
+    user = User.objects.get(pk=user_id)
+    bookmarks = BookmarkSerializer(user).data['bookmarks']
+    reviews = UserReviewSerializer(user).data['reviews']
+    bookmark_lst = []
+    for bookmark in bookmarks:
+        bookmark_lst.append(bookmark['id'])
+    
+    review_lst = []
+    for review in reviews:
+        review_lst.append(review['id'])
+
+    recommend_lst = []
+    for bookmark in bookmarks:
+        target = Movie.objects.get(pk=bookmark['id'])
+
+
+        # 제목 기반
+        title = target.title
+        all_movie = Movie.objects.all()
+
+        for movie in all_movie:
+            cnt = 0
+            for i in range(len(title)):
+                if cnt == min(5, len(title)) or i >= len(movie.title) or len(recommend_lst)>1:
+                    break
+                if title[i] == movie.title[i]:
+                    cnt += 1
+                elif title[i] == movie.title[i] == ':':
+                    if movie not in recommend_lst and movie.id not in bookmark_lst and movie.id not in review_lst:
+                        recommend_lst.append(movie)
+                else:
+                    break
+            if cnt > 4:
+                if movie not in recommend_lst and movie.id not in bookmark_lst and movie.id not in review_lst:
+                    recommend_lst.append(movie)
+        
+        # 장르 기반
+        genres = target.genres.all()
+        for genre in genres:
+            g = Genre.objects.get(id=genre.id)
+            g_lst = g.movies.all().order_by('-vote_count')[:3]
+            for gr in g_lst:
+                if gr not in recommend_lst and gr.id not in bookmark_lst and movie.id not in review_lst:
+                    recommend_lst.append(gr)
+    serializer = PosterSerializer(recommend_lst, many=True).data
+    # recommend_lst = list(set(list(serializer)))
+    return Response(serializer)
 
 
 # 유저 프로필 변경

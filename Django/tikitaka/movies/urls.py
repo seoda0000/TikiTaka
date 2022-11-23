@@ -10,6 +10,7 @@ urlpatterns = [
     path('now_playing_movie_video/', views.now_playing_movie_video),
     path('search_movie/', views.search_movie),
     path('search_movie_people/', views.search_movie_people),
+    path('<int:movie_id>/recommend/', views.recommend_movie),
 
     # DB에서 사용하는 링크
     # path('get_countries/', views.get_countries),
