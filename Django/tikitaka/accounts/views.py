@@ -91,6 +91,16 @@ def bookmark_list(request, user_id):
     return Response(serializer.data)
 
 
+# 유저 프로필 변경
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def edit_profile(request):
+    user = User.objects.get(id=request.data.get('id'))
+    user.profile_img = request.data.get('profile_img')
+    serializer = BookmarkSerializer(user)
+    return Response(serializer.data)
+
 
 
 # @api_view(['POST'])

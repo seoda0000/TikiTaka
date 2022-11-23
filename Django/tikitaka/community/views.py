@@ -103,6 +103,7 @@ def create_review(request, movie_pk):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
+
 @api_view(['POST'])
 @authentication_classes([])
 @permission_classes([])
@@ -253,3 +254,14 @@ def feed(request, user_id):
     else:
         feed = review_me
     return Response(feed)
+
+
+# ============ 캘린더 출력 ============
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def calendar(request, user_id):
+    user = User.objects.get(pk=user_id)
+    calendars = UserCalendarSerializer(user)
+    calendars = calendars.data.get("calendar_set")
+    return Response(calendars)
