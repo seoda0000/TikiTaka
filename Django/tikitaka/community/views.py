@@ -136,7 +136,7 @@ def create_calendar(request):
 def review_list(request, username):
     user = User.objects.get(username=username)
     reviews = Review.objects.filter(user=user)
-    serializer = ReviewSerializerForLike(reviews, many=True)
+    serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data)
 
 
