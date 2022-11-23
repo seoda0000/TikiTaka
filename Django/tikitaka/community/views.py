@@ -208,6 +208,24 @@ def delete_calendar(request):
     return Response(data, status=status.HTTP_201_CREATED)
 
 
+# =============== 북마크 ===================
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def bookmark(request, movie_pk):
+    movie = Movie.objects.get(pk=movie_pk)
+    user = User.objects.get(pk=request.data['user'])
+    if movie.bookmark_users.filter(id=user.id).exists():
+        movie.bookmark_users.remove(user)
+        is_bookmark = False
+    else:
+        movie.bookmark_users.add(user)
+        is_bookmark = True
+    context = {
+        'is_bookmark' : is_bookmark,
+    }
+    return JsonResponse(context)
+
 
 # =============== 좋아요 ===================
 @api_view(['POST'])

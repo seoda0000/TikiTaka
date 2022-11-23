@@ -7,6 +7,7 @@ urlpatterns = [
     # path('reviews/<int:review_pk>/', views.review_detail),
     path('<int:movie_pk>/create_review/', views.create_review),
     path('<int:movie_pk>/create_vote/', views.create_vote),
+    path('<int:movie_pk>/bookmark/', views.bookmark),
     path('review/<int:review_pk>/create_comment/', views.create_comment),
     path('review/<int:review_pk>/', views.review_detail),
     path('review/<int:review_pk>/like/', views.like),
