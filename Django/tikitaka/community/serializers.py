@@ -7,16 +7,6 @@ from accounts.models import User
 
 
 
-class ReviewSerializer(serializers.ModelSerializer):
-    movie = MovieNameSerializer(read_only=True)
-    backdrop = BackdropSerializer(read_only=True)
-    user = UserShortSerializer(read_only=True)
-    like_user = UserShortSerializer(read_only=True)
-
-    class Meta:
-        model = Review
-        fields = '__all__'
-
 
 class ReviewCreateSerializer(serializers.ModelSerializer):
     # movie = MovieNameSerializer(read_only=True)
@@ -34,6 +24,17 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = '__all__'
         read_only_fields = ('review', 'user')
+
+class ReviewSerializer(serializers.ModelSerializer):
+    movie = MovieNameSerializer(read_only=True)
+    backdrop = BackdropSerializer(read_only=True)
+    user = UserShortSerializer(read_only=True)
+    like_user = UserShortSerializer(read_only=True)
+    comment_set = CommentSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Review
+        fields = '__all__'
 
 
 class CommentCreateSerializer(serializers.ModelSerializer):
