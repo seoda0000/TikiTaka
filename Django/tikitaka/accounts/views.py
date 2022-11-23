@@ -11,6 +11,7 @@ from django.http import JsonResponse
 import requests
 from rest_framework import status
 from json.decoder import JSONDecodeError
+from movies.models import Genre
 
 
 
@@ -37,9 +38,10 @@ BASE_URL = 'http://localhost:8000/'
 def all_user_list(request):
     users = User.objects.all()
     serializer = UserNameSerializer(users, many=True)
-    lst = set()
+    lst = []
     for s in serializer.data:
-        lst.add(s['first_name'])
+        if s['username']:
+            lst.append(s['username'])
     return Response(list(lst))
 
 
