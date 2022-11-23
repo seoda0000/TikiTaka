@@ -30,7 +30,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     movie = MovieNameSerializer(read_only=True)
     backdrop = BackdropSerializer(read_only=True)
     user = UserShortSerializer(read_only=True)
-    like_user = UserShortSerializer(read_only=True)
+    like_users = UserShortSerializer(many=True, read_only=True)
     comment_set = CommentSerializer(many=True, read_only=True)
 
     class Meta:

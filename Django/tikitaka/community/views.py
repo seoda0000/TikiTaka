@@ -151,10 +151,10 @@ def review_detail(request, review_pk):
         serializer = ReviewSerializer(review)
         return Response(serializer.data)
     elif request.method == 'PUT':
-        serializer = ReviewSerializer(review, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
+        serializer = ReviewCreateSerializer(review, data=request.data)
+        # if serializer.is_valid(raise_exception=True):
+        serializer.save()
+        return Response(serializer.data)
     elif request.method == 'DELETE':
         username = review.user.username
         review.delete()
