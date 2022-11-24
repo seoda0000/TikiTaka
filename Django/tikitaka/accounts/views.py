@@ -166,8 +166,7 @@ def edit_profile(request):
         user.profile_img = request.data.get('profile_img')
     if request.data.get('description'):
         user.description = request.data.get('description')
-    genre_id_list = request.POST.getlist('genre_id_list')
-    print('@@@@@@@@@@@@@@@@@@@@', genre_id_list)
+    genre_id_list = request.data.get('genre_id_list')
     if genre_id_list :
         user.favorite_genres.all().delete()
         for g in genre_id_list:
