@@ -69,8 +69,8 @@ def search_user(request):
 @permission_classes([])
 def get_user(request):
     name = request.GET.get('name','')
-    users = User.objects.get(username=name)
-    serializer = UserSerializer(users)
+    user = User.objects.get(username=name)
+    serializer = UserSerializer(user)
     return Response(serializer.data)
 
 

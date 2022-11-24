@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Review, Vote, Comment, Calendar, Message
 from movies.models import Movie, Backdrop
-from movies.serializers import BackdropSerializer, MovieNameSerializer
+from movies.serializers import BackdropSerializer, MovieNameSerializer, PosterSerializer
 from accounts.serializers import UserShortSerializer, UserIdSerializer
 from accounts.models import User
 
@@ -49,7 +49,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class MessageSerializer(serializers.ModelSerializer):
-    movie = MovieNameSerializer(read_only=True)
+    movie = PosterSerializer(read_only=True)
     from_user = UserShortSerializer(read_only=True)
     to_user = UserShortSerializer(read_only=True)
 
