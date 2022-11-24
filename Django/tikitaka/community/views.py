@@ -302,7 +302,7 @@ def calendar(request, user_id):
 @permission_classes([])
 def message_list(request, user_id):
     user = User.objects.get(pk=user_id)
-    messages = Message.objects.filter(to_user=user)
+    messages = Message.objects.filter(to_user=user).reverse()
     serializer = MessageSerializer(messages, many=True)
     return Response(serializer.data)
 
@@ -313,7 +313,7 @@ def message_list(request, user_id):
 @permission_classes([])
 def message_new(request, user_id):
     user = User.objects.get(pk=user_id)
-    messages = Message.objects.filter(to_user=user).filter(is_checked=False)
+    messages = Message.objects.filter(to_user=user).filter(is_checked=False).reverse()
     serializer = MessageSerializer(messages, many=True)
     return Response(serializer.data)
 
