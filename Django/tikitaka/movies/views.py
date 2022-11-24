@@ -16,7 +16,7 @@ from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.db.models import Q
 
 from .models import Movie, Genre, Country, WatchProvider, People, Backdrop
-from .serializers import PosterListSerializer, PeopleSerializer, MovieDetailSerializer
+from .serializers import PosterListSerializer, PeopleSerializer, MovieDetailSerializer, MovieIdSerializer
 from accounts.models import User
 from accounts.serializers import BookmarkSerializer, PosterSerializer
 from community.serializers import UserReviewSerializer
@@ -100,6 +100,17 @@ def movie_detail(request):
     movie = Movie.objects.get(id=int(movie_id))
     serializer = MovieDetailSerializer(movie)
     return Response(serializer.data)
+
+# 영화 아이디 조회
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def movie_id(request):
+    title = request.GET.get('title','')
+    movie = Movie.objects.get(title=title)
+    serializer = MovieIdSerializer(movie)
+    return Response(serializer.data)
+
 
 
 # 영화 기반 영화 추천
