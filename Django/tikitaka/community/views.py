@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.shortcuts import render, redirect
 from .models import Review, Comment, Vote, Calendar, Message
-from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer, LikeReviewSerializer, FeedSerializer, UserReviewSerializer, CalendarCreateSerializer, CalendarSerializer, UserCalendarSerializer, MessageCreateSerializer, MessageSerializer
+from .serializers import ReviewCreateSerializer, CommentCreateSerializer, VoteCreateSerializer, ReviewSerializer, CommentSerializer, VoteSerializer, LikeReviewSerializer, FeedSerializer, UserReviewSerializer, CalendarCreateSerializer, CalendarSerializer, UserCalendarSerializer, MessageCreateSerializer, MessageSerializer, UserMessageSerializer
 from movies.models import Movie, Backdrop
 from movies.serializers import BackdropSerializer, MovieNameSerializer
 # from .forms import ReviewForm, CommentForm
@@ -294,3 +294,40 @@ def calendar(request, user_id):
     calendars = UserCalendarSerializer(user)
     calendars = calendars.data.get("calendar_set")
     return Response(calendars)
+
+
+# ============ 전체 메세지 출력 ============
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def message_list(request, user_id):
+    user = User.objects.get(pk=user_id)
+    messages = Message.objects.filter(to_user=user)
+    serializer = MessageSerializer(messages, many=True)
+    return Response(serializer.data)
+
+
+# ============ 안 읽은 메세지 출력 ============
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def message_new(request, user_id):
+    user = User.objects.get(pk=user_id)
+    messages = Message.objects.filter(to_user=user).filter(is_checked=False)
+    serializer = MessageSerializer(messages, many=True)
+    return Response(serializer.data)
+
+
+# ============ 메세지 확인 ============
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def message_check(request, user_id):
+    message_id = request.data['message_id']
+    user = User.objects.get(pk=user_id)
+    message = Message.objects.get(id=message_id)
+    message.is_checked = True
+    message.save()
+    messages = Message.objects.filter(to_user=user).filter(is_checked=False)
+    serializer = MessageSerializer(messages, many=True)
+    return Response(serializer.data)

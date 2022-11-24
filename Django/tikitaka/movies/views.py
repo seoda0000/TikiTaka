@@ -151,17 +151,29 @@ def recommend_movie(request, movie_id):
                     recommend_lst.append(movie)
             else:
                 break
-        if cnt > 4:
+        if cnt > 4 or cnt == len(title):
             if movie not in recommend_lst and movie.id not in bookmark_lst and movie.id not in review_lst and movie.id != target.id:
                 recommend_lst.append(movie)
-        
+    # 제작진 기반
+    director = People.objects.get(id=target.director.id)
+    d_lst = director.movie_set.all().order_by('-vote_count')
+    flag = 0
+    for dr in d_lst:
+        if flag > 2:
+            break 
+        if dr not in recommend_lst and dr.id not in bookmark_lst and dr.id not in review_lst and dr.id != target.id:
+            recommend_lst.append(dr)
+            flag += 1
+    
+
+
     # 장르 기반
     genres = target.genres.all()
     for genre in genres:
         g = Genre.objects.get(id=genre.id)
         g_lst = g.movies.all().order_by('-vote_count')[:10]
         for gr in g_lst:
-            if gr not in recommend_lst and gr.id not in bookmark_lst and movie.id not in review_lst:
+            if gr not in recommend_lst and gr.id not in bookmark_lst and movie.id not in review_lst and gr.id != target.id:
                 recommend_lst.append(gr)
     serializer = PosterSerializer(recommend_lst, many=True).data
     # recommend_lst = list(set(list(serializer)))

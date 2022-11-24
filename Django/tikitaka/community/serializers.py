@@ -135,6 +135,14 @@ class UserCalendarSerializer(serializers.ModelSerializer):
         model = User
         fields = ('calendar_set',)
 
+
+class UserMessageSerializer(serializers.ModelSerializer):
+    inbox = MessageSerializer(many=True, read_only=True)
+    class Meta:
+        model = User
+        fields = ('inbox',)
+
+
 class FeedSerializer(serializers.ModelSerializer):
     following = UserReviewSerializer(many=True, read_only=True)
 

@@ -22,4 +22,7 @@ urlpatterns = [
     path('calendar/create/', views.create_calendar),
     path('calendar/delete/', views.delete_calendar),
     path('calendar/list/<int:user_id>/', views.calendar),
+    path('message/list/<int:user_id>/', views.message_list),
+    path('message/new/<int:user_id>/', views.message_new),
+    path('message/check/<int:user_id>/', views.message_check),
 ]
