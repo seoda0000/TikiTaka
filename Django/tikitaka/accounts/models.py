@@ -28,13 +28,13 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-class Message(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.PROTECT)
-    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="outbox")
-    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="inbox")
-    content = models.TextField(null=True, blank=True)
-    send_at = models.DateTimeField(auto_now_add=True)
-    is_checked = models.BooleanField(default=False)
+# class Message(models.Model):
+#     movie = models.ForeignKey(Movie, on_delete=models.PROTECT)
+#     from_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="outbox")
+#     to_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="inbox")
+#     content = models.TextField(null=True, blank=True)
+#     send_at = models.DateTimeField(auto_now_add=True)
+#     is_checked = models.BooleanField(default=False)
 
     
 

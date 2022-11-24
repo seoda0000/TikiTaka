@@ -39,3 +39,12 @@ class Calendar(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.PROTECT)
     backdrop = models.ForeignKey(Backdrop, on_delete=models.PROTECT)
     start = models.CharField(max_length=300)
+
+
+class Message(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=models.PROTECT)
+    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="outbox")
+    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="inbox")
+    content = models.TextField()
+    send_at = models.DateTimeField(auto_now_add=True)
+    is_checked = models.BooleanField(default=False)

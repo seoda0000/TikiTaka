@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Review, Vote, Comment, Calendar
+from .models import Review, Vote, Comment, Calendar, Message
 from movies.models import Movie, Backdrop
 from movies.serializers import BackdropSerializer, MovieNameSerializer
 from accounts.serializers import UserShortSerializer, UserIdSerializer
@@ -16,6 +16,16 @@ class ReviewCreateSerializer(serializers.ModelSerializer):
         model = Review
         fields = '__all__'
         read_only_fields = ('movie', 'like_users',)
+
+
+class MessageCreateSerializer(serializers.ModelSerializer):
+    # movie = MovieNameSerializer(read_only=True)
+    # backdrop = BackdropSerializer(read_only=True)
+
+    class Meta:
+        model = Message
+        fields = '__all__'
+        read_only_fields = ('movie', 'send_at', 'is_checked',)
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -35,6 +45,16 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
+        fields = '__all__'
+
+
+class MessageSerializer(serializers.ModelSerializer):
+    movie = MovieNameSerializer(read_only=True)
+    from_user = UserShortSerializer(read_only=True)
+    to_user = UserShortSerializer(read_only=True)
+
+    class Meta:
+        model = Message
         fields = '__all__'
 
 
