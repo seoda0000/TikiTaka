@@ -275,7 +275,7 @@ def like_list(request, username):
 @permission_classes([])
 def feed(request, user_id):
     user = User.objects.get(pk=user_id)
-    feed = UserReviewSerializer(user).data['reviews']
+    feed = UserReviewSerializer(user).data.get('reviews')
     if FeedSerializer(user).data.get('following'):
         reviews = FeedSerializer(user).data.get('following')
         for review in reviews:
