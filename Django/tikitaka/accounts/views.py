@@ -167,11 +167,16 @@ def edit_profile(request):
     if request.data.get('description'):
         user.description = request.data.get('description')
     genre_id_list = request.data.get('genre_id_list')
+    print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', genre_id_list)
+    genres = Genre.objects.all()
     if genre_id_list :
-        user.favorite_genres.all().delete()
-        for g in genre_id_list:
-            genre = Genre.objects.get(pk=g)
-            genre.favorite_users.add(user)
+        for genre in genres:
+            if genre.id in genre_id_list:
+                if not genre.favorite_users.filter(id=user.id).exists():
+                    genre.favorite_users.add(user)
+            else:
+                if genre.favorite_users.filter(id=user.id).exists():
+                    genre.favorite_users.remove(user)
     user.save()
     return Response(status=status.HTTP_200_OK)
 
