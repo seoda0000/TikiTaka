@@ -275,13 +275,14 @@ def like_list(request, username):
 @permission_classes([])
 def feed(request, user_id):
     user = User.objects.get(pk=user_id)
-    review_me = UserReviewSerializer(user).data['reviews']
+    feed = UserReviewSerializer(user).data['reviews']
     if FeedSerializer(user).data.get('following'):
-        review_following = FeedSerializer(user).data['following'][0]['reviews']
-        feed = review_me + review_following
+        reviews = FeedSerializer(user).data.get('following')
+        for review in reviews:
+            if review.get('reviews'):
+                feed += review.get('reviews')
+
         feed.sort(key=lambda x:x['created_at'], reverse=True)
-    else:
-        feed = review_me
     return Response(feed)
 
 
