@@ -1,4 +1,5 @@
 # MovieProject
+![TikiTaka-ERD.drawio.png](./images/feed1.png)
 
 # 1. 팀원 정보 및 업무 분담 내역
 
