@@ -1,11 +1,15 @@
-# MovieProject
-![TikiTaka-ERD.drawio.png](./images/feed1.png)
-
 # 1. 팀원 정보 및 업무 분담 내역
 
 - 협업 - 기획, 디자인, 프론트 디테일
-- 김정원 - 프론트엔드 총괄
-- 서다경 - 백엔드 총괄
+<table>
+    <tr>
+        <td height="140px" align="center"> <a href="https://github.com/seoda0000">
+            <img src="https://avatars.githubusercontent.com/u/93422277?v=4" width="140px" /> <br><br> 서다경 <br>(Back-End) </a> <br></td>
+        <td height="140px" align="center"> <a href="https://github.com/Going777">
+            <img src="https://avatars.githubusercontent.com/u/109488657?v=4" width="140px" /> <br><br> 김정원 <br>(Front-End) </a> <br></td>
+    </tr>
+
+</table>
 
 ---
 
@@ -14,10 +18,10 @@
 ### 기획 의도
 
 - 사용자 경험 중심으로 토의
-    - 어떻게 사용자 경험을 개선할 수 있을까?
-    - 사용자에게 어떤 새로운 경험을 줄 수 있을까?
+  - 어떻게 사용자 경험을 개선할 수 있을까?
+  - 사용자에게 어떤 새로운 경험을 줄 수 있을까?
 - 일종의 영화 인스타그램
-    - 영화를 주제로 한 **이미지 기록 중심의 커뮤니티**
+  - 영화를 주제로 한 **이미지 기록 중심의 커뮤니티**
 - 기획했던 굵직한 기능들은 대부분 구현한 것 같음
 
 ---
@@ -26,7 +30,7 @@
 
 - 이미지 중심의 커뮤니티이므로, 여러 종류의 이미지로 영화를 나타낼 수 있어야함. 따라서 DB를 탄탄하게 구성함.
 
-![TikiTaka-ERD.drawio.png](./images/DB.png)
+![TikiTaka-ERD.drawio.png](./images/TikiTaka-ERD.drawio.png)
 
 ## Movies
 
@@ -56,11 +60,13 @@
 
 ### B. 다양한 정보 제공
 
+![TikiTaka-ERD.drawio.png](./images/detail1.png)
+
 - 영화 상세 페이지에서 유저가 알고 싶어 할 정보들을 담아 출력
-    - 영화를 제공 중인 OTT 서비스
-    - 제작국가
-    - 캐스팅 및 감독
-    - 예고편
+  - 영화를 제공 중인 OTT 서비스
+  - 제작국가
+  - 캐스팅 및 감독
+  - 예고편
 
 ### C. 맞춤형 영화 추천
 
@@ -70,15 +76,34 @@
 
 ### A. 각자 자신만의 방법으로 기록
 
+![TikiTaka-ERD.drawio.png](./images/post.png)
+
 - 영화 감상문 피드 작성
+  A. 사용자 편의 “편리해야 한다”
+  자동 검색어 기능
+  TMDB 공식 이미지 제공
+
+  B. 커스터마이징 “개성을 나타내야 한다“
+  다수의 이미지 중 선택 가능
+  영화 캐릭터 프로필 이미지
+
+![TikiTaka-ERD.drawio.png](./images/feed1.png)
+
 - 관심있는 영화 북마크 설정
+  ![TikiTaka-ERD.drawio.png](./images/bookmark.png)
+
 - 영화 포스터를 이용하여 나만의 달력 꾸미기
+  ![TikiTaka-ERD.drawio.png](./images/Picture2.png)
 
 ### B. 유저 간 의견 공유 서비스
 
 - 팔로우 유저라면 팔로우한 유저의 기록물을 함께 감상 가능 (단, 수정은 작성자만 가능!)
+  ![TikiTaka-ERD.drawio.png](./images/community.png)
 - 게시된 피드에 대해 댓글 및 좋아요 기능으로 자신의 의견 공유 가능
 - 팔로우한 유저에 다이렉트로 영화를 추천할 수 있는 메시지 전송 가능
+  ![TikiTaka-ERD.drawio.png](./images/message1.png)
+  ![TikiTaka-ERD.drawio.png](./images/message2.png)
+  ![TikiTaka-ERD.drawio.png](./images/message.png)
 
 ---
 
@@ -88,9 +113,13 @@
 
 ### A. 특정 영화 관련 영화 추천
 
+![TikiTaka-ERD.drawio.png](./images/detail2.png)
+
 - 영화 디테일 페이지에서 영화와 연관된 추천 영화 출력한다.
 
 ### B. 사용자 맞춤 영화 추천
+
+![TikiTaka-ERD.drawio.png](./images/foryou.png)
 
 - 사용자가 북마크 해둔 영화를 기반으로 한 영화 추천한다.
 - 모든 추천 목록에서, 사용자가 이미 북마크/리뷰 남긴 영화를 제외해 보다 사용자에게 적합한 추천을 실행한다.
@@ -124,8 +153,7 @@
 - 컴포넌트 재사용은 충분한 설계가 되었을 때 사용하자…..!
 - 프론트엔드의 컴포넌트와 백엔드의 serializer, model 등에서 팀원이 공유하는 시각화된 구조가 절실했다.
 - 시간 관계상 구현하지 못한 부분이 아쉽다.
-    - 영화 MBTI
-    - 카카오톡 로그인
-    - 영화 상세 페이지에서 해당 영화 기반으로 작성한 피드를 모아 좋아요 순으로 출력
-    - 홈 화면의 영화 예고편 컴포넌트 3d carousel 적용
-    - 완전한 서버 배포
+  - 영화 MBTI
+  - 카카오톡 로그인
+  - 영화 상세 페이지에서 해당 영화로 영화 감상문 피드를 작성한 피드를 모아 출력
+  - 홈 화면의 영화 예고편 컴포넌트 3d carousel 적용
